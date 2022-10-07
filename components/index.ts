@@ -210,3 +210,7 @@ export { useRect } from './utils/layouts'
 export type { ReactiveDomReact } from './utils/layouts'
 export { default as Highlight } from './shared/highlight'
 export type { HighlightProps } from './shared/highlight'
+
+export { addColorAlpha } from './utils/color'
+export type { DeepPartial } from './utils/types'
+
