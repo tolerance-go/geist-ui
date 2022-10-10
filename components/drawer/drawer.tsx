@@ -16,6 +16,7 @@ interface Props {
   onContentClick?: (event: MouseEvent<HTMLElement>) => void
   wrapClassName?: string
   placement?: DrawerPlacement
+  hideBackdrop?: boolean
 }
 
 const defaultProps = {
@@ -36,6 +37,7 @@ const DrawerComponent: React.FC<React.PropsWithChildren<DrawerProps>> = ({
   onContentClick,
   wrapClassName,
   children,
+  hideBackdrop = false,
   ...props
 }: React.PropsWithChildren<DrawerProps> & typeof defaultProps) => {
   const portal = usePortal('drawer')
@@ -71,16 +73,22 @@ const DrawerComponent: React.FC<React.PropsWithChildren<DrawerProps>> = ({
 
   if (!portal) return null
   return createPortal(
-    <Backdrop
-      onClick={closeFromBackdrop}
-      onContentClick={onContentClick}
-      visible={visible}
-      width="100%"
-      {...bindings}>
+    hideBackdrop ? (
       <DrawerWrapper visible={visible} className={wrapClassName} {...props}>
         {children}
       </DrawerWrapper>
-    </Backdrop>,
+    ) : (
+      <Backdrop
+        onClick={closeFromBackdrop}
+        onContentClick={onContentClick}
+        visible={visible}
+        width="100%"
+        {...bindings}>
+        <DrawerWrapper visible={visible} className={wrapClassName} {...props}>
+          {children}
+        </DrawerWrapper>
+      </Backdrop>
+    ),
     portal,
   )
 }
