@@ -3,7 +3,7 @@
   "version": "2.3.8",
   "main": "components/index.ts",
   "scripts": {
-    "dev": "yarn docs:collect && next dev",
+    "dev": "pnpm docs:collect && next dev",
     "docs:start": "next start",
     "docs:collect": "node scripts/collect-meta.js",
     "docs:seeds": "node scripts/seeds/update.js",
