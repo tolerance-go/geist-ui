@@ -2,6 +2,7 @@ import { GeistUIThemes } from './presets/index'
 import type { DeepPartial } from '../utils/types'
 import lightTheme from './presets/default'
 import darkTheme from './presets/dark'
+import { merge } from 'lodash'
 
 export type GeistUserTheme = DeepPartial<GeistUIThemes> & { type: string }
 
@@ -75,6 +76,13 @@ const create = (base: GeistUIThemes, custom: GeistUserTheme): GeistUIThemes => {
 const createFromDark = (custom: GeistUserTheme) => create(darkTheme, custom)
 const createFromLight = (custom: GeistUserTheme) => create(lightTheme, custom)
 
+const extend = (base: GeistUIThemes, custom: GeistUserTheme): GeistUIThemes => {
+  return merge({}, base, custom) as GeistUIThemes
+}
+
+const extendFromDark = (custom: GeistUserTheme) => extend(darkTheme, custom)
+const extendFromLight = (custom: GeistUserTheme) => extend(lightTheme, custom)
+
 const Themes = {
   isPresetTheme,
   isAvailableThemeType,
@@ -84,6 +92,8 @@ const Themes = {
   create,
   createFromDark,
   createFromLight,
+  extendFromDark,
+  extendFromLight,
 }
 
 export default Themes

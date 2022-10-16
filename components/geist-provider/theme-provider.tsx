@@ -27,8 +27,12 @@ const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   useEffect(() => {
     if (!themes?.length) return
     setAllThemes(last => {
-      const safeThemes = themes.filter(item => Themes.isAvailableThemeType(item.type))
-      const nextThemes = Themes.getPresets().concat(safeThemes)
+      // 有了 extendTheme api 后，theme 的名称是允许重复的，所以注释掉
+      // const safeThemes = themes.filter(item => Themes.isAvailableThemeType(item.type))
+      const nextThemes = Themes.getPresets()
+        // 如果有自定义 theme 和 preset theme 重名，使用 custom
+        .filter(item => !themes.find(theme => theme.type === item.type))
+        .concat(themes)
       return {
         ...last,
         themes: nextThemes,
