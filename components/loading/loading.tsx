@@ -38,7 +38,7 @@ const getIconBgColor = (
   return color ? color : colors[type]
 }
 
-const LoadingComponent: React.FC<React.PropsWithChildren<LoadingProps>> = ({
+const LoadingComponent = (({
   children,
   type,
   color,
@@ -133,7 +133,7 @@ const LoadingComponent: React.FC<React.PropsWithChildren<LoadingProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<LoadingProps>>
 
 LoadingComponent.defaultProps = defaultProps
 LoadingComponent.displayName = 'GeistLoading'

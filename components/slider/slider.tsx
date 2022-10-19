@@ -70,7 +70,7 @@ const getValue = (
     : Number.parseFloat(slideDistance.toFixed(1))
 }
 
-const SliderComponent: React.FC<React.PropsWithChildren<SliderProps>> = ({
+const SliderComponent = (({
   hideValue,
   disabled,
   type,
@@ -106,7 +106,7 @@ const SliderComponent: React.FC<React.PropsWithChildren<SliderProps>> = ({
   }
 
   const updateValue = useCallback(
-    offset => {
+    (offset: number) => {
       const currentValue = getValue(max, min, step, offset, sideWidthRef.current)
       setValue(currentValue)
       onChange && onChange(currentValue)
@@ -181,7 +181,7 @@ const SliderComponent: React.FC<React.PropsWithChildren<SliderProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<SliderProps>>
 
 SliderComponent.defaultProps = defaultProps
 SliderComponent.displayName = 'GeistSlider'

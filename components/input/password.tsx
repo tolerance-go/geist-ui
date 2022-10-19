@@ -1,8 +1,9 @@
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 import React, { useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { Props, defaultProps } from './input-props'
-import PasswordIcon from './password-icon'
-import Input from './input'
 import { useScale, withScale } from '../use-scale'
+import Input from './input'
+import { defaultProps, Props } from './input-props'
+import PasswordIcon from './password-icon'
 
 interface PasswordProps extends Props {
   hideToggle?: boolean
@@ -16,10 +17,7 @@ const passwordDefaultProps = {
 type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof PasswordProps>
 export type InputPasswordProps = PasswordProps & NativeAttrs
 
-const InputPasswordComponent = React.forwardRef<
-  HTMLInputElement,
-  React.PropsWithChildren<InputPasswordProps>
->(
+const InputPasswordComponent = React.forwardRef(
   (
     {
       hideToggle,
@@ -62,7 +60,7 @@ const InputPasswordComponent = React.forwardRef<
       </Input>
     )
   },
-)
+) as ForwardRefFC<HTMLInputElement, React.PropsWithChildren<InputPasswordProps>>
 
 InputPasswordComponent.defaultProps = passwordDefaultProps
 InputPasswordComponent.displayName = 'GeistInputPassword'

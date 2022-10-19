@@ -5,6 +5,7 @@ import { useModalContext } from './modal-context'
 import Button, { ButtonProps } from '../button/button'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 type ModalActionEvent = MouseEvent<HTMLButtonElement> & {
   close: () => void
@@ -25,10 +26,7 @@ const defaultProps = {
 
 export type ModalActionProps = Props & Omit<ButtonProps, keyof Props>
 
-const ModalActionComponent = React.forwardRef<
-  HTMLButtonElement,
-  React.PropsWithChildren<ModalActionProps>
->(
+const ModalActionComponent = React.forwardRef(
   (
     {
       className,
@@ -103,7 +101,7 @@ const ModalActionComponent = React.forwardRef<
       </Button>
     )
   },
-)
+) as ForwardRefFC<HTMLButtonElement, React.PropsWithChildren<ModalActionProps>>
 
 ModalActionComponent.defaultProps = defaultProps
 ModalActionComponent.displayName = 'GeistModalAction'

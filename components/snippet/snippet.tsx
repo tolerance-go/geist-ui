@@ -40,7 +40,7 @@ const textArrayToString = (text: string[]): string => {
   }, '')
 }
 
-const SnippetComponent: React.FC<React.PropsWithChildren<SnippetProps>> = ({
+const SnippetComponent = (({
   type,
   filled,
   children,
@@ -159,7 +159,7 @@ const SnippetComponent: React.FC<React.PropsWithChildren<SnippetProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<SnippetProps>>
 
 SnippetComponent.defaultProps = defaultProps
 SnippetComponent.displayName = 'GeistSnippet'

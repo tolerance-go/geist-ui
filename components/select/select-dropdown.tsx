@@ -3,6 +3,7 @@ import useTheme from '../use-theme'
 import { useSelectContext } from './select-context'
 import Dropdown from '../shared/dropdown'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 interface Props {
   visible: boolean
@@ -20,10 +21,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SelectDropdownProps = Props & NativeAttrs
 
-const SelectDropdown = React.forwardRef<
-  HTMLDivElement | null,
-  React.PropsWithChildren<SelectDropdownProps>
->(
+const SelectDropdown = React.forwardRef(
   (
     {
       visible,
@@ -69,7 +67,7 @@ const SelectDropdown = React.forwardRef<
       </Dropdown>
     )
   },
-)
+) as ForwardRefFC<HTMLDivElement | null, React.PropsWithChildren<SelectDropdownProps>>
 
 SelectDropdown.defaultProps = defaultProps
 SelectDropdown.displayName = 'GeistSelectDropdown'

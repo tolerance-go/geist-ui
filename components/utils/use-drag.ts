@@ -23,7 +23,7 @@ const useDrag = (
     currentX: currentXRef.current,
   })
 
-  const elementMouseDownHandler = (event: MouseEvent) => {
+  const elementMouseDownHandler = (event: MouseEvent | TouchEvent) => {
     event.stopPropagation()
     event.stopImmediatePropagation()
     onDragging.current = true

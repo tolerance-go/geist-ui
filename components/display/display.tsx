@@ -18,7 +18,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type DisplayProps = Props & NativeAttrs
 
-const DisplayComponent: React.FC<React.PropsWithChildren<DisplayProps>> = ({
+const DisplayComponent = (({
   children,
   caption,
   shadow,
@@ -77,7 +77,7 @@ const DisplayComponent: React.FC<React.PropsWithChildren<DisplayProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<DisplayProps>>
 
 DisplayComponent.defaultProps = defaultProps
 DisplayComponent.displayName = 'GeistDisplay'

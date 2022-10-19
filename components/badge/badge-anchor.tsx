@@ -59,7 +59,7 @@ const getTransform = (placement: BadgeAnchorPlacement): TransformStyles => {
   return styles[placement]
 }
 
-const BadgeAnchor: React.FC<React.PropsWithChildren<BadgeAnchorProps>> = ({
+const BadgeAnchor = (({
   children,
   placement,
 }: BadgeAnchorProps & typeof defaultProps) => {
@@ -96,7 +96,7 @@ const BadgeAnchor: React.FC<React.PropsWithChildren<BadgeAnchorProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<BadgeAnchorProps>>
 
 BadgeAnchor.defaultProps = defaultProps
 BadgeAnchor.displayName = 'GeistBadgeAnchor'

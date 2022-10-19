@@ -8,17 +8,13 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  className: '',
-}
-
 export type GridProps = Props & GridBasicItemProps
 
 const GridComponent: React.FC<React.PropsWithChildren<GridProps>> = ({
   children,
-  className,
+  className = '',
   ...props
-}: React.PropsWithChildren<GridProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<GridProps>) => {
   const { SCALES } = useScale()
   const { className: resolveClassName, styles } = css.resolve`
     div {
@@ -39,7 +35,6 @@ const GridComponent: React.FC<React.PropsWithChildren<GridProps>> = ({
   )
 }
 
-GridComponent.defaultProps = defaultProps
 GridComponent.displayName = 'GeistGrid'
 const Grid = withScale(GridComponent)
 export default Grid

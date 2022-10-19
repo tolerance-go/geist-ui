@@ -13,7 +13,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type BreadcrumbsSeparatorProps = Props & NativeAttrs
 
-const Separator: React.FC<React.PropsWithChildren<BreadcrumbsSeparatorProps>> = ({
+const Separator = (({
   children,
   className,
 }: BreadcrumbsSeparatorProps & typeof defaultProps) => {
@@ -37,7 +37,7 @@ const Separator: React.FC<React.PropsWithChildren<BreadcrumbsSeparatorProps>> = 
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<BreadcrumbsSeparatorProps>>
 
 Separator.defaultProps = defaultProps
 Separator.displayName = 'GeistBreadcrumbsSeparator'

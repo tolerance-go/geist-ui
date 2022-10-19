@@ -54,7 +54,7 @@ const getCurrentColor = (
   return colors[+customColorKey]
 }
 
-const ProgressComponent: React.FC<ProgressProps> = ({
+const ProgressComponent = (({
   value,
   max,
   className,
@@ -120,7 +120,7 @@ const ProgressComponent: React.FC<ProgressProps> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<ProgressProps>
 
 ProgressComponent.defaultProps = defaultProps
 ProgressComponent.displayName = 'GeistProgress'

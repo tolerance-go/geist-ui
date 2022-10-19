@@ -1,3 +1,4 @@
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 import React from 'react'
 import Link from '../link'
 
@@ -13,10 +14,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
 export type UserLinkProps = Props & NativeAttrs
 
-const UserLink = React.forwardRef<
-  HTMLAnchorElement,
-  React.PropsWithChildren<UserLinkProps>
->(
+const UserLink = React.forwardRef(
   (
     {
       href,
@@ -39,7 +37,7 @@ const UserLink = React.forwardRef<
       </div>
     )
   },
-)
+) as ForwardRefFC<HTMLAnchorElement, React.PropsWithChildren<UserLinkProps>>
 
 UserLink.defaultProps = defaultProps
 UserLink.displayName = 'GeistUserLink'

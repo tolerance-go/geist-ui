@@ -1,4 +1,13 @@
-import React, { useRef, useState, MouseEvent, useMemo, useImperativeHandle } from 'react'
+import React, {
+  useRef,
+  useState,
+  MouseEvent,
+  useMemo,
+  useImperativeHandle,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+} from 'react'
 import useScale, { withScale } from '../use-scale'
 import useTheme from '../use-theme'
 import ButtonDrip from './button.drip'
@@ -44,10 +53,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.ButtonHTMLAttributes<any>, keyof Props>
 export type ButtonProps = Props & NativeAttrs
 
-const ButtonComponent = React.forwardRef<
-  HTMLButtonElement,
-  React.PropsWithChildren<ButtonProps>
->(
+const ButtonComponent = React.forwardRef(
   (
     btnProps: ButtonProps & typeof defaultProps,
     ref: React.Ref<HTMLButtonElement | null>,
@@ -217,7 +223,9 @@ const ButtonComponent = React.forwardRef<
       </button>
     )
   },
-)
+) as ForwardRefExoticComponent<
+  PropsWithoutRef<React.PropsWithChildren<ButtonProps>> & RefAttributes<HTMLButtonElement>
+>
 
 ButtonComponent.defaultProps = defaultProps
 ButtonComponent.displayName = 'GeistButton'

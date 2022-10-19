@@ -1,5 +1,8 @@
 import React, {
   CSSProperties,
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -80,10 +83,7 @@ const getSearchIcon = (searching?: boolean, scale: string | number = 1) => {
   return searching ? <Loading scale={+scale / 2} /> : <span />
 }
 
-const AutoCompleteComponent = React.forwardRef<
-  HTMLInputElement,
-  React.PropsWithChildren<AutoCompleteProps>
->(
+const AutoCompleteComponent = React.forwardRef(
   (
     {
       options,
@@ -241,7 +241,10 @@ const AutoCompleteComponent = React.forwardRef<
       </AutoCompleteContext.Provider>
     )
   },
-)
+) as ForwardRefExoticComponent<
+  PropsWithoutRef<React.PropsWithChildren<AutoCompleteProps>> &
+    RefAttributes<HTMLInputElement>
+>
 
 AutoCompleteComponent.defaultProps = defaultProps
 AutoCompleteComponent.displayName = 'GeistAutoComplete'

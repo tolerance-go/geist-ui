@@ -26,7 +26,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SelectOptionProps = Props & NativeAttrs
 
-const SelectOptionComponent: React.FC<React.PropsWithChildren<SelectOptionProps>> = ({
+const SelectOptionComponent = (({
   value: identValue,
   className,
   children,
@@ -130,7 +130,7 @@ const SelectOptionComponent: React.FC<React.PropsWithChildren<SelectOptionProps>
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<SelectOptionProps>>
 
 SelectOptionComponent.defaultProps = defaultProps
 SelectOptionComponent.displayName = 'GeistSelectOption'

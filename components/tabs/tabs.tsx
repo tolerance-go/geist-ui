@@ -45,7 +45,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TabsProps = Props & NativeAttrs
 
-const TabsComponent: React.FC<React.PropsWithChildren<TabsProps>> = ({
+const TabsComponent = (({
   initialValue: userCustomInitialValue,
   value,
   hideDivider,
@@ -177,7 +177,7 @@ const TabsComponent: React.FC<React.PropsWithChildren<TabsProps>> = ({
       </div>
     </TabsContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<TabsProps>>
 
 TabsComponent.defaultProps = defaultProps
 TabsComponent.displayName = 'GeistTabs'

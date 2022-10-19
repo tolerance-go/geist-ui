@@ -20,9 +20,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type AutoCompleteDropdownProps = Props & NativeAttrs
 
-const AutoCompleteDropdown: React.FC<
-  React.PropsWithChildren<AutoCompleteDropdownProps>
-> = ({
+const AutoCompleteDropdown = (({
   children,
   visible,
   className,
@@ -64,7 +62,7 @@ const AutoCompleteDropdown: React.FC<
       </div>
     </Dropdown>
   )
-}
+}) as React.FC<React.PropsWithChildren<AutoCompleteDropdownProps>>
 
 AutoCompleteDropdown.defaultProps = defaultProps
 AutoCompleteDropdown.displayName = 'GeistAutoCompleteDropdown'

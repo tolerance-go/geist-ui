@@ -60,7 +60,7 @@ const makeChildren = (value: Array<TreeFile> = []) => {
     })
 }
 
-const Tree: React.FC<React.PropsWithChildren<TreeProps>> = ({
+const Tree = (({
   children,
   onClick,
   initialExpand,
@@ -98,7 +98,7 @@ const Tree: React.FC<React.PropsWithChildren<TreeProps>> = ({
       </div>
     </TreeContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<TreeProps>>
 
 Tree.defaultProps = defaultProps
 Tree.displayName = 'GeistTree'

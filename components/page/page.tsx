@@ -54,7 +54,7 @@ const DotStyles: React.FC<DotStylesProps> = ({ dotSpace, dotSize }) => {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageProps = Props & NativeAttrs
 
-const PageComponent: React.FC<React.PropsWithChildren<PageProps>> = ({
+const PageComponent = (({
   children,
   render,
   dotBackdrop,
@@ -113,7 +113,7 @@ const PageComponent: React.FC<React.PropsWithChildren<PageProps>> = ({
       `}</style>
     </section>
   )
-}
+}) as React.FC<React.PropsWithChildren<PageProps>>
 
 PageComponent.defaultProps = defaultProps
 PageComponent.displayName = 'GeistPage'

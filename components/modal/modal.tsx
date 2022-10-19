@@ -35,7 +35,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ModalProps = Props & NativeAttrs
 
-const ModalComponent: React.FC<React.PropsWithChildren<ModalProps>> = ({
+const ModalComponent = (({
   visible: customVisible,
   onClose,
   children,
@@ -107,7 +107,7 @@ const ModalComponent: React.FC<React.PropsWithChildren<ModalProps>> = ({
     </ModalContext.Provider>,
     portal,
   )
-}
+}) as React.FC<React.PropsWithChildren<ModalProps>>
 
 ModalComponent.defaultProps = defaultProps
 ModalComponent.displayName = 'GeistModal'

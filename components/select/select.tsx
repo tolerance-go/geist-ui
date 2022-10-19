@@ -20,6 +20,7 @@ import Ellipsis from '../shared/ellipsis'
 import SelectInput from './select-input'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 export type SelectRef = {
   focus: () => void
@@ -61,7 +62,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SelectProps = Props & NativeAttrs
 
-const SelectComponent = React.forwardRef<SelectRef, React.PropsWithChildren<SelectProps>>(
+const SelectComponent = React.forwardRef(
   (
     {
       children,
@@ -113,15 +114,17 @@ const SelectComponent = React.forwardRef<SelectRef, React.PropsWithChildren<Sele
       onDropdownVisibleChange(next)
       setVisible(next)
     }
-    const updateValue = (next: string) => {
-      setValue(last => {
-        if (!Array.isArray(last)) return next
-        if (!last.includes(next)) return [...last, next]
-        return last.filter(item => item !== next)
-      })
-      onChange && onChange(valueRef.current as string | string[])
-      if (!multiple) {
-        updateVisible(false)
+    const updateValue = (next: string | undefined) => {
+      if (next) {
+        setValue(last => {
+          if (!Array.isArray(last)) return next
+          if (!last.includes(next)) return [...last, next]
+          return last.filter(item => item !== next)
+        })
+        onChange && onChange(valueRef.current as string | string[])
+        if (!multiple) {
+          updateVisible(false)
+        }
       }
     }
 
@@ -322,7 +325,7 @@ const SelectComponent = React.forwardRef<SelectRef, React.PropsWithChildren<Sele
       </SelectContext.Provider>
     )
   },
-)
+) as ForwardRefFC<SelectRef, React.PropsWithChildren<SelectProps>>
 
 SelectComponent.defaultProps = defaultProps
 SelectComponent.displayName = 'GeistSelect'

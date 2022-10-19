@@ -33,7 +33,8 @@ const useBodyScroll = (
   options?: BodyScrollOptions,
 ): [boolean, Dispatch<SetStateAction<boolean>>] => {
   /* istanbul ignore next */
-  if (typeof document === 'undefined') return [false, (t: boolean) => t]
+  if (typeof document === 'undefined')
+    return [false, ((t: boolean) => t) as Dispatch<SetStateAction<boolean>>]
   const elRef = elementRef || useRef<HTMLElement>(document.body)
   const [hidden, setHidden] = useState<boolean>(false)
   const safeOptions = {

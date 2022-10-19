@@ -12,7 +12,7 @@ const defaultProps = {
   height: 22,
 }
 
-const TreeFolderIcon: React.FC<TreeFolderIconProps> = ({
+const TreeFolderIcon = (({
   color,
   width,
   height,
@@ -37,7 +37,7 @@ const TreeFolderIcon: React.FC<TreeFolderIconProps> = ({
       `}</style>
     </svg>
   )
-}
+}) as React.FC<TreeFolderIconProps>
 
 TreeFolderIcon.defaultProps = defaultProps
 TreeFolderIcon.displayName = 'GeistTreeFolderIcon'

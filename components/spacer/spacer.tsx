@@ -14,7 +14,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SpacerProps = Props & NativeAttrs
 
-const SpacerComponent: React.FC<SpacerProps> = ({
+const SpacerComponent = (({
   inline,
   className,
   ...props
@@ -34,7 +34,7 @@ const SpacerComponent: React.FC<SpacerProps> = ({
       `}</style>
     </span>
   )
-}
+}) as React.FC<SpacerProps>
 
 SpacerComponent.defaultProps = defaultProps
 SpacerComponent.displayName = 'GeistSpacer'

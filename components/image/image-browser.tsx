@@ -1,4 +1,9 @@
-import React, { useMemo } from 'react'
+import React, {
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+  useMemo,
+} from 'react'
 import Link from '../link'
 import { Props as LinkProps } from '../link/link'
 import useTheme from '../use-theme'
@@ -96,10 +101,7 @@ const getAddressInput = (
   </div>
 )
 
-const ImageBrowserComponent = React.forwardRef<
-  HTMLDivElement,
-  React.PropsWithChildren<ImageBrowserProps>
->(
+const ImageBrowserComponent = React.forwardRef(
   (
     {
       url,
@@ -200,7 +202,9 @@ const ImageBrowserComponent = React.forwardRef<
       </div>
     )
   },
-)
+) as ForwardRefExoticComponent<
+  PropsWithoutRef<ImageBrowserProps> & RefAttributes<HTMLDivElement>
+>
 
 ImageBrowserComponent.defaultProps = defaultProps
 ImageBrowserComponent.displayName = 'GeistImageBrowser'

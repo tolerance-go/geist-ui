@@ -40,7 +40,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof Props>
 export type CheckboxProps = Props & NativeAttrs
 
-const CheckboxComponent: React.FC<CheckboxProps> = ({
+const CheckboxComponent = (({
   checked,
   initialChecked,
   disabled,
@@ -152,7 +152,7 @@ const CheckboxComponent: React.FC<CheckboxProps> = ({
       `}</style>
     </label>
   )
-}
+}) as React.FC<CheckboxProps>
 
 CheckboxComponent.defaultProps = defaultProps
 CheckboxComponent.displayName = 'GeistCheckbox'

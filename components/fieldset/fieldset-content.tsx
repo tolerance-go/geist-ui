@@ -13,9 +13,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type FieldsetContentProps = Props & NativeAttrs
 
-const FieldsetContentComponent: React.FC<
-  React.PropsWithChildren<FieldsetContentProps>
-> = ({
+const FieldsetContentComponent = (({
   className,
   children,
   ...props
@@ -42,7 +40,7 @@ const FieldsetContentComponent: React.FC<
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<FieldsetContentProps>>
 
 FieldsetContentComponent.defaultProps = defaultProps
 FieldsetContentComponent.displayName = 'GeistFieldsetContent'

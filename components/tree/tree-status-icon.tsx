@@ -14,7 +14,7 @@ const defaultProps = {
   active: false,
 }
 
-const TreeStatusIcon: React.FC<TreeStatusIconProps> = ({
+const TreeStatusIcon = (({
   color,
   width,
   height,
@@ -43,7 +43,7 @@ const TreeStatusIcon: React.FC<TreeStatusIconProps> = ({
       `}</style>
     </svg>
   )
-}
+}) as React.FC<TreeStatusIconProps>
 
 TreeStatusIcon.defaultProps = defaultProps
 TreeStatusIcon.displayName = 'GeistTreeStatusIcon'

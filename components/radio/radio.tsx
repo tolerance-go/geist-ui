@@ -38,7 +38,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.InputHTMLAttributes<any>, keyof Props>
 export type RadioProps = Props & NativeAttrs
 
-const RadioComponent: React.FC<React.PropsWithChildren<RadioProps>> = ({
+const RadioComponent = (({
   className,
   checked,
   onChange,
@@ -175,7 +175,7 @@ const RadioComponent: React.FC<React.PropsWithChildren<RadioProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<RadioProps>>
 
 RadioComponent.defaultProps = defaultProps
 RadioComponent.displayName = 'GeistRadio'

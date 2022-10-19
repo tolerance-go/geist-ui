@@ -17,7 +17,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type BreadcrumbsProps = Props & NativeAttrs
 
-const BreadcrumbsComponent: React.FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
+const BreadcrumbsComponent = (({
   separator,
   children,
   className,
@@ -88,7 +88,7 @@ const BreadcrumbsComponent: React.FC<React.PropsWithChildren<BreadcrumbsProps>> 
       `}</style>
     </nav>
   )
-}
+}) as React.FC<React.PropsWithChildren<BreadcrumbsProps>>
 
 BreadcrumbsComponent.defaultProps = defaultProps
 BreadcrumbsComponent.displayName = 'GeistBreadcrumbs'

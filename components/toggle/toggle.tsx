@@ -40,7 +40,7 @@ export type ToggleSize = {
   height: string
 }
 
-const ToggleComponent: React.FC<ToggleProps> = ({
+const ToggleComponent = (({
   initialChecked,
   checked,
   disabled,
@@ -171,7 +171,7 @@ const ToggleComponent: React.FC<ToggleProps> = ({
       `}</style>
     </label>
   )
-}
+}) as React.FC<ToggleProps>
 
 ToggleComponent.defaultProps = defaultProps
 ToggleComponent.displayName = 'GeistToggle'

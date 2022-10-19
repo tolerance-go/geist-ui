@@ -30,7 +30,7 @@ const getTypeColor = (type: NormalTypes, palette: GeistUIThemesPalette) => {
 type NativeAttrs = Omit<React.DetailsHTMLAttributes<any>, keyof Props>
 export type TextChildProps = Props & NativeAttrs
 
-const TextChild: React.FC<React.PropsWithChildren<TextChildProps>> = ({
+const TextChild = (({
   children,
   tag,
   className,
@@ -92,7 +92,7 @@ const TextChild: React.FC<React.PropsWithChildren<TextChildProps>> = ({
       `}</style>
     </Component>
   )
-}
+}) as React.FC<React.PropsWithChildren<TextChildProps>>
 
 TextChild.defaultProps = defaultProps
 TextChild.displayName = 'GeistTextChild'

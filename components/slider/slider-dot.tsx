@@ -1,6 +1,7 @@
 import React from 'react'
 import useTheme from '../use-theme'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 interface Props {
   left: number
@@ -17,10 +18,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type SliderDotProps = Props & NativeAttrs
 
-const SliderDot = React.forwardRef<
-  HTMLDivElement,
-  React.PropsWithChildren<SliderDotProps>
->(
+const SliderDot = React.forwardRef(
   (
     {
       children,
@@ -77,7 +75,7 @@ const SliderDot = React.forwardRef<
       </div>
     )
   },
-)
+) as ForwardRefFC<HTMLDivElement, React.PropsWithChildren<SliderDotProps>>
 
 SliderDot.defaultProps = defaultProps
 SliderDot.displayName = 'GeistSliderDot'

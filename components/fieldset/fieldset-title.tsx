@@ -5,18 +5,14 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  className: '',
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<HTMLDivElement>, keyof Props>
 export type FieldsetTitleProps = Props & NativeAttrs
 
 const FieldsetTitle: React.FC<React.PropsWithChildren<FieldsetTitleProps>> = ({
-  className,
+  className = '',
   children,
   ...props
-}: React.PropsWithChildren<FieldsetTitleProps> & typeof defaultProps) => {
+}: React.PropsWithChildren<FieldsetTitleProps>) => {
   const classes = useClasses('title', className)
 
   return (
@@ -39,6 +35,5 @@ const FieldsetTitle: React.FC<React.PropsWithChildren<FieldsetTitleProps>> = ({
   )
 }
 
-FieldsetTitle.defaultProps = defaultProps
 FieldsetTitle.displayName = 'GeistFieldsetTitle'
 export default FieldsetTitle

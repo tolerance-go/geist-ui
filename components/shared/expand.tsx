@@ -12,7 +12,7 @@ const defaultProps = {
   delay: 200,
 }
 
-const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({
+const Expand = (({
   isExpanded,
   delay,
   children,
@@ -87,7 +87,7 @@ const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<ExpandProps>>
 
 Expand.defaultProps = defaultProps
 Expand.displayName = 'GeistExpand'

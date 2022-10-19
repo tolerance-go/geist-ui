@@ -17,7 +17,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TabsItemProps = Props & NativeAttrs
 
-const TabsItemComponent: React.FC<React.PropsWithChildren<TabsItemProps>> = ({
+const TabsItemComponent = (({
   children,
   value,
   label,
@@ -145,7 +145,7 @@ const TabsItemComponent: React.FC<React.PropsWithChildren<TabsItemProps>> = ({
 
   /* eslint-disable react/jsx-no-useless-fragment */
   return isActive ? <>{children}</> : null
-}
+}) as React.FC<React.PropsWithChildren<TabsItemProps>>
 
 TabsItemComponent.defaultProps = defaultProps
 TabsItemComponent.displayName = 'GeistTabsItem'

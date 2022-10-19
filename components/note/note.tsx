@@ -46,7 +46,7 @@ const getStatusColor = (type: NoteTypes, filled: boolean, theme: GeistUIThemes) 
   }
 }
 
-export const NoteComponent: React.FC<React.PropsWithChildren<NoteProps>> = ({
+export const NoteComponent = (({
   children,
   type,
   label,
@@ -98,7 +98,7 @@ export const NoteComponent: React.FC<React.PropsWithChildren<NoteProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<NoteProps>>
 
 NoteComponent.defaultProps = defaultProps
 NoteComponent.displayName = 'GeistNote'

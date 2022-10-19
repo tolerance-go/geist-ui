@@ -19,7 +19,7 @@ const defaultProps = {
 
 export type GridContainerProps = Props & GridBasicItemProps
 
-const GridContainerComponent: React.FC<React.PropsWithChildren<GridContainerProps>> = ({
+const GridContainerComponent = (({
   gap,
   wrap,
   children,
@@ -51,7 +51,7 @@ const GridContainerComponent: React.FC<React.PropsWithChildren<GridContainerProp
       {styles}
     </GridBasicItem>
   )
-}
+}) as React.FC<React.PropsWithChildren<GridContainerProps>>
 
 GridContainerComponent.defaultProps = defaultProps
 GridContainerComponent.displayName = 'GeistGridContainer'

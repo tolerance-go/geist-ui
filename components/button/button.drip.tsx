@@ -7,19 +7,14 @@ interface Props {
   color: string
 }
 
-const defaultProps = {
-  x: 0,
-  y: 0,
-}
-
 export type ButtonDrip = Props
 
 const ButtonDrip: React.FC<ButtonDrip> = ({
-  x,
-  y,
+  x = 0,
+  y = 0,
   color,
   onCompleted,
-}: ButtonDrip & typeof defaultProps) => {
+}: ButtonDrip) => {
   const dripRef = useRef<HTMLDivElement>(null)
   /* istanbul ignore next */
   const top = Number.isNaN(+y) ? 0 : y - 10
@@ -85,6 +80,5 @@ const ButtonDrip: React.FC<ButtonDrip> = ({
   )
 }
 
-ButtonDrip.defaultProps = defaultProps
 ButtonDrip.displayName = 'GeistButtonDrip'
 export default ButtonDrip

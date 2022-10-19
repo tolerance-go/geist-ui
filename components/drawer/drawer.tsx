@@ -29,7 +29,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type DrawerProps = Props & NativeAttrs
 
-const DrawerComponent: React.FC<React.PropsWithChildren<DrawerProps>> = ({
+const DrawerComponent = (({
   visible: customVisible,
   keyboard,
   disableBackdropClick,
@@ -91,7 +91,7 @@ const DrawerComponent: React.FC<React.PropsWithChildren<DrawerProps>> = ({
     ),
     portal,
   )
-}
+}) as React.FC<React.PropsWithChildren<DrawerProps>>
 
 DrawerComponent.defaultProps = defaultProps
 DrawerComponent.displayName = 'GeistDrawer'

@@ -1,6 +1,11 @@
 import Link from '../link'
 import { Props as LinkBasicProps } from '../link/link'
-import React, { useMemo } from 'react'
+import React, {
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+  useMemo,
+} from 'react'
 import { pickChild } from '../utils/collections'
 import BreadcrumbsSeparator from './breadcrumbs-separator'
 import useClasses from '../use-classes'
@@ -21,10 +26,7 @@ type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
 type NativeLinkAttrs = Omit<NativeAttrs, keyof LinkBasicProps>
 export type BreadcrumbsItemProps = Props & NativeLinkAttrs
 
-const BreadcrumbsItem = React.forwardRef<
-  HTMLAnchorElement,
-  React.PropsWithChildren<BreadcrumbsItemProps>
->(
+const BreadcrumbsItem = React.forwardRef(
   (
     {
       href,
@@ -58,7 +60,10 @@ const BreadcrumbsItem = React.forwardRef<
       </Link>
     )
   },
-)
+) as ForwardRefExoticComponent<
+  PropsWithoutRef<React.PropsWithChildren<BreadcrumbsItemProps>> &
+    RefAttributes<HTMLAnchorElement>
+>
 
 BreadcrumbsItem.defaultProps = defaultProps
 BreadcrumbsItem.displayName = 'GeistBreadcrumbsItem'

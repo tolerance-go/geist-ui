@@ -23,7 +23,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TreeFileProps = Props & NativeAttrs
 
-const TreeFile: React.FC<React.PropsWithChildren<TreeFileProps>> = ({
+const TreeFile = (({
   name,
   parentPath,
   level,
@@ -104,7 +104,7 @@ const TreeFile: React.FC<React.PropsWithChildren<TreeFileProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<TreeFileProps>>
 
 TreeFile.defaultProps = defaultProps
 TreeFile.displayName = 'GeistTreeFile'

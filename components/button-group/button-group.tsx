@@ -42,7 +42,7 @@ const getGroupBorderColors = (
   return colors[withoutLightType] || (colors.default as string)
 }
 
-const ButtonGroupComponent: React.FC<React.PropsWithChildren<ButtonGroupProps>> = (
+const ButtonGroupComponent = ((
   groupProps: ButtonGroupProps & typeof defaultProps,
 ) => {
   const theme = useTheme()
@@ -117,7 +117,7 @@ const ButtonGroupComponent: React.FC<React.PropsWithChildren<ButtonGroupProps>> 
       </div>
     </ButtonGroupContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<ButtonGroupProps>>
 
 ButtonGroupComponent.defaultProps = defaultProps
 ButtonGroupComponent.displayName = 'GeistButtonGroup'

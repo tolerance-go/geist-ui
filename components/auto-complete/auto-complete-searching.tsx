@@ -12,9 +12,7 @@ const defaultProps = {
 
 export type AutoCompleteSearchProps = Props & React.HTMLAttributes<any>
 
-const AutoCompleteSearchComponent: React.FC<
-  React.PropsWithChildren<AutoCompleteSearchProps>
-> = ({
+const AutoCompleteSearchComponent = (({
   children,
   className,
 }: React.PropsWithChildren<AutoCompleteSearchProps> & typeof defaultProps) => {
@@ -49,7 +47,7 @@ const AutoCompleteSearchComponent: React.FC<
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<AutoCompleteSearchProps>>
 
 AutoCompleteSearchComponent.defaultProps = defaultProps
 AutoCompleteSearchComponent.displayName = 'GeistAutoCompleteSearch'

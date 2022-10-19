@@ -18,7 +18,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type DescriptionProps = Props & NativeAttrs
 
-const DescriptionComponent: React.FC<DescriptionProps> = ({
+const DescriptionComponent = (({
   title,
   content,
   className,
@@ -68,7 +68,7 @@ const DescriptionComponent: React.FC<DescriptionProps> = ({
       `}</style>
     </dl>
   )
-}
+}) as React.FC<DescriptionProps>
 
 DescriptionComponent.defaultProps = defaultProps
 DescriptionComponent.displayName = 'GeistDescription'

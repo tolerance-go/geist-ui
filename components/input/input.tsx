@@ -1,4 +1,13 @@
-import React, { useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
+import React, {
+  ForwardRefExoticComponent,
+  PropsWithoutRef,
+  RefAttributes,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import useTheme from '../use-theme'
 import InputLabel from './input-label'
 import InputBlockLabel from './input-block-label'
@@ -23,10 +32,7 @@ const simulateChangeEvent = (
   }
 }
 
-const InputComponent = React.forwardRef<
-  HTMLInputElement,
-  React.PropsWithChildren<InputProps>
->(
+const InputComponent = React.forwardRef(
   (
     {
       label,
@@ -258,7 +264,9 @@ const InputComponent = React.forwardRef<
       </div>
     )
   },
-)
+) as ForwardRefExoticComponent<
+  PropsWithoutRef<React.PropsWithChildren<InputProps>> & RefAttributes<HTMLInputElement>
+>
 
 InputComponent.defaultProps = defaultProps
 InputComponent.displayName = 'GeistInput'

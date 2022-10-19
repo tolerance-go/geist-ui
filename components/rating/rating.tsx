@@ -46,7 +46,7 @@ const getColor = (type: RatingTypes, palette: GeistUIThemesPalette): string => {
   return colors[type] || (colors.default as string)
 }
 
-const RatingComponent: React.FC<RatingProps> = ({
+const RatingComponent = (({
   type,
   className,
   icon,
@@ -135,7 +135,7 @@ const RatingComponent: React.FC<RatingProps> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<RatingProps>
 
 RatingComponent.defaultProps = defaultProps
 RatingComponent.displayName = 'GeistRating'

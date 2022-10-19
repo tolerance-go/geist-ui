@@ -4,6 +4,7 @@ import LinkIcon from './icon'
 import { addColorAlpha } from '../utils/color'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 export interface Props {
   href?: string
@@ -26,10 +27,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.AnchorHTMLAttributes<any>, keyof Props>
 export type LinkProps = Props & NativeAttrs
 
-const LinkComponent = React.forwardRef<
-  HTMLAnchorElement,
-  React.PropsWithChildren<LinkProps>
->(
+const LinkComponent = React.forwardRef(
   (
     {
       href,
@@ -90,7 +88,7 @@ const LinkComponent = React.forwardRef<
       </a>
     )
   },
-)
+) as ForwardRefFC<HTMLAnchorElement, React.PropsWithChildren<LinkProps>>
 
 LinkComponent.defaultProps = defaultProps
 LinkComponent.displayName = 'GeistLink'

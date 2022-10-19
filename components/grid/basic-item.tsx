@@ -61,7 +61,7 @@ const getItemLayout = (val: GridBreakpointsValue): ItemLayoutValue => {
   }
 }
 
-const GridBasicItem: React.FC<React.PropsWithChildren<GridBasicItemProps>> = ({
+const GridBasicItem = (({
   xs,
   sm,
   md,
@@ -170,7 +170,7 @@ const GridBasicItem: React.FC<React.PropsWithChildren<GridBasicItemProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<GridBasicItemProps>>
 
 GridBasicItem.defaultProps = defaultProps
 GridBasicItem.displayName = 'GeistGridBasicItem'

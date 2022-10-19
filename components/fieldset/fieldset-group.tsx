@@ -19,7 +19,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type FieldsetGroupProps = Props & NativeAttrs
 
-const FieldsetGroupComponent: React.FC<React.PropsWithChildren<FieldsetGroupProps>> = ({
+const FieldsetGroupComponent = (({
   className,
   children,
   value,
@@ -139,7 +139,7 @@ const FieldsetGroupComponent: React.FC<React.PropsWithChildren<FieldsetGroupProp
       </div>
     </FieldsetContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<FieldsetGroupProps>>
 
 FieldsetGroupComponent.defaultProps = defaultProps
 FieldsetGroupComponent.displayName = 'GeistFieldsetGroup'

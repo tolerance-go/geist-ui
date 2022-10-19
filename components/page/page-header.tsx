@@ -15,7 +15,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageHeaderProps = Props & NativeAttrs
 
-const PageHeaderComponent: React.FC<React.PropsWithChildren<PageHeaderProps>> = ({
+const PageHeaderComponent = (({
   children,
   center,
   className,
@@ -44,7 +44,7 @@ const PageHeaderComponent: React.FC<React.PropsWithChildren<PageHeaderProps>> = 
       `}</style>
     </header>
   )
-}
+}) as React.FC<React.PropsWithChildren<PageHeaderProps>>
 
 PageHeaderComponent.defaultProps = defaultProps
 PageHeaderComponent.displayName = 'GeistPageHeader'

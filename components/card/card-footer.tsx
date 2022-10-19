@@ -16,7 +16,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CardFooterProps = Props & NativeAttrs
 
-const CardFooterComponent: React.FC<React.PropsWithChildren<CardFooterProps>> = ({
+const CardFooterComponent = (({
   children,
   className,
   disableAutoMargin,
@@ -55,7 +55,7 @@ const CardFooterComponent: React.FC<React.PropsWithChildren<CardFooterProps>> = 
       `}</style>
     </footer>
   )
-}
+}) as React.FC<React.PropsWithChildren<CardFooterProps>>
 
 CardFooterComponent.defaultProps = defaultProps
 CardFooterComponent.displayName = 'GeistCardFooter'

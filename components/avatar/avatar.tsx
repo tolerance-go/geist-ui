@@ -29,7 +29,7 @@ const safeText = (text: string): string => {
   return text.slice(0, 3)
 }
 
-const AvatarComponent: React.FC<AvatarProps> = ({
+const AvatarComponent = (({
   src,
   stacked,
   text,
@@ -93,7 +93,7 @@ const AvatarComponent: React.FC<AvatarProps> = ({
       `}</style>
     </span>
   )
-}
+}) as React.FC<AvatarProps>
 
 AvatarComponent.defaultProps = defaultProps
 AvatarComponent.displayName = 'GeistAvatar'

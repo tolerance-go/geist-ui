@@ -13,14 +13,14 @@ const defaultProps = {
 
 export type AutoCompleteEmptyProps = Props & React.HTMLAttributes<any>
 
-const AutoCompleteEmpty: React.FC<React.PropsWithChildren<AutoCompleteEmptyProps>> = ({
+const AutoCompleteEmpty = (({
   children,
   hidden,
   className,
 }: React.PropsWithChildren<AutoCompleteEmptyProps> & typeof defaultProps) => {
   if (hidden) return null
   return <AutoCompleteSearch className={className}>{children}</AutoCompleteSearch>
-}
+}) as React.FC<React.PropsWithChildren<AutoCompleteEmptyProps>>
 
 AutoCompleteEmpty.defaultProps = defaultProps
 AutoCompleteEmpty.displayName = 'GeistAutoCompleteEmpty'

@@ -27,7 +27,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TreeFolderProps = Props & NativeAttrs
 
-const TreeFolder: React.FC<React.PropsWithChildren<TreeFolderProps>> = ({
+const TreeFolder = (({
   name,
   children,
   parentPath,
@@ -153,7 +153,7 @@ const TreeFolder: React.FC<React.PropsWithChildren<TreeFolderProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<TreeFolderProps>>
 
 TreeFolder.defaultProps = defaultProps
 TreeFolder.displayName = 'GeistTreeFolder'

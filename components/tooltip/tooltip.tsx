@@ -43,7 +43,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type TooltipProps = Props & NativeAttrs
 
-const TooltipComponent: React.FC<React.PropsWithChildren<TooltipProps>> = ({
+const TooltipComponent = (({
   children,
   initialVisible,
   text,
@@ -128,7 +128,7 @@ const TooltipComponent: React.FC<React.PropsWithChildren<TooltipProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<TooltipProps>>
 
 TooltipComponent.defaultProps = defaultProps
 TooltipComponent.displayName = 'GeistTooltip'

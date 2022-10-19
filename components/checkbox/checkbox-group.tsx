@@ -19,7 +19,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CheckboxGroupProps = Props & NativeAttrs
 
-const CheckboxGroupComponent: React.FC<React.PropsWithChildren<CheckboxGroupProps>> = ({
+const CheckboxGroupComponent = (({
   disabled,
   onChange,
   value,
@@ -77,7 +77,7 @@ const CheckboxGroupComponent: React.FC<React.PropsWithChildren<CheckboxGroupProp
       </div>
     </CheckboxContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<CheckboxGroupProps>>
 
 CheckboxGroupComponent.defaultProps = defaultProps
 CheckboxGroupComponent.displayName = 'GeistCheckboxGroup'

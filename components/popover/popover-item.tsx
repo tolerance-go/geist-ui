@@ -21,7 +21,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PopoverItemProps = Props & NativeAttrs
 
-const PopoverItemComponent: React.FC<React.PropsWithChildren<PopoverItemProps>> = ({
+const PopoverItemComponent = (({
   children,
   line,
   title,
@@ -90,7 +90,7 @@ const PopoverItemComponent: React.FC<React.PropsWithChildren<PopoverItemProps>> 
       {title && <PopoverItem line title={false} />}
     </>
   )
-}
+}) as React.FC<React.PropsWithChildren<PopoverItemProps>>
 
 PopoverItemComponent.defaultProps = defaultProps
 PopoverItemComponent.displayName = 'GeistPopoverItem'

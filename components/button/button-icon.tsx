@@ -7,21 +7,16 @@ interface Props {
   className?: string
 }
 
-const defaultProps = {
-  isRight: false,
-  className: '',
-}
-
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type ButtonIconProps = Props & NativeAttrs
 
 const ButtonIcon: React.FC<React.PropsWithChildren<ButtonIconProps>> = ({
-  isRight,
+  isRight = false,
   isSingle,
   children,
-  className,
+  className = '',
   ...props
-}: ButtonIconProps & typeof defaultProps) => {
+}: ButtonIconProps) => {
   const classes = useClasses('icon', { right: isRight, single: isSingle }, className)
 
   return (
@@ -61,6 +56,5 @@ const ButtonIcon: React.FC<React.PropsWithChildren<ButtonIconProps>> = ({
   )
 }
 
-ButtonIcon.defaultProps = defaultProps
 ButtonIcon.displayName = 'GeistButtonIcon'
 export default ButtonIcon

@@ -21,7 +21,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.ImgHTMLAttributes<any>, keyof Props>
 export type ImageProps = Props & NativeAttrs
 
-const ImageComponent: React.FC<ImageProps> = ({
+const ImageComponent = (({
   src,
   disableSkeleton,
   className,
@@ -89,7 +89,7 @@ const ImageComponent: React.FC<ImageProps> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<ImageProps>
 
 ImageComponent.defaultProps = defaultProps
 ImageComponent.displayName = 'GeistImage'

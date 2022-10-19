@@ -13,7 +13,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type FieldsetFooterProps = Props & NativeAttrs
 
-const FieldsetFooterComponent: React.FC<React.PropsWithChildren<FieldsetFooterProps>> = ({
+const FieldsetFooterComponent = (({
   className,
   children,
   ...props
@@ -47,7 +47,7 @@ const FieldsetFooterComponent: React.FC<React.PropsWithChildren<FieldsetFooterPr
       `}</style>
     </footer>
   )
-}
+}) as React.FC<React.PropsWithChildren<FieldsetFooterProps>>
 
 FieldsetFooterComponent.defaultProps = defaultProps
 FieldsetFooterComponent.displayName = 'GeistFieldsetFooter'

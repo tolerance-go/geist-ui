@@ -26,7 +26,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type BackdropProps = Props & NativeAttrs
 
-const Backdrop: React.FC<React.PropsWithChildren<BackdropProps>> = React.memo(
+const Backdrop = React.memo(
   ({
     children,
     onClick,
@@ -127,7 +127,7 @@ const Backdrop: React.FC<React.PropsWithChildren<BackdropProps>> = React.memo(
       </CssTransition>
     )
   },
-)
+) as unknown as React.FC<React.PropsWithChildren<BackdropProps>>
 
 Backdrop.defaultProps = defaultProps
 Backdrop.displayName = 'GeistBackdrop'

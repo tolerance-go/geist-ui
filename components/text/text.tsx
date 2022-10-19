@@ -55,7 +55,7 @@ const getModifierChild = (tags: TextRenderableElements, children: ReactNode) => 
   return <TextChild tag={tags[0]}>{getModifierChild(nextTag, children)}</TextChild>
 }
 
-const TextComponent: React.FC<React.PropsWithChildren<TextProps>> = ({
+const TextComponent = (({
   h1,
   h2,
   h3,
@@ -77,10 +77,10 @@ const TextComponent: React.FC<React.PropsWithChildren<TextProps>> = ({
   const elements: ElementMap = { h1, h2, h3, h4, h5, h6, p, blockquote }
   const inlineElements: ElementMap = { span, small, b, em, i, del }
   const names = Object.keys(elements).filter(
-    (name: keyof JSX.IntrinsicElements) => elements[name],
+    (name) => elements[name as keyof JSX.IntrinsicElements],
   ) as TextRenderableElements
   const inlineNames = Object.keys(inlineElements).filter(
-    (name: keyof JSX.IntrinsicElements) => inlineElements[name],
+    (name) => inlineElements[name as keyof JSX.IntrinsicElements],
   ) as TextRenderableElements
 
   /**
@@ -113,7 +113,7 @@ const TextComponent: React.FC<React.PropsWithChildren<TextProps>> = ({
       {modifers}
     </TextChild>
   )
-}
+}) as React.FC<React.PropsWithChildren<TextProps>>
 
 TextComponent.defaultProps = defaultProps
 TextComponent.displayName = 'GeistText'

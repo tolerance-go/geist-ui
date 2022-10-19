@@ -26,7 +26,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CardProps = Props & NativeAttrs
 
-const CardComponent: React.FC<React.PropsWithChildren<CardProps>> = ({
+const CardComponent = (({
   children,
   hoverable,
   className,
@@ -89,7 +89,7 @@ const CardComponent: React.FC<React.PropsWithChildren<CardProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<CardProps>>
 
 CardComponent.defaultProps = defaultProps
 CardComponent.displayName = 'GeistCard'

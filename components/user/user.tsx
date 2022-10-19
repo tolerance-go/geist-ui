@@ -19,7 +19,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type UserProps = Props & NativeAttrs
 
-const UserComponent: React.FC<React.PropsWithChildren<UserProps>> = ({
+const UserComponent = (({
   src,
   text,
   name,
@@ -87,7 +87,7 @@ const UserComponent: React.FC<React.PropsWithChildren<UserProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<UserProps>>
 
 UserComponent.defaultProps = defaultProps
 UserComponent.displayName = 'GeistUser'

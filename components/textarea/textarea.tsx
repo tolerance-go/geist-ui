@@ -4,6 +4,7 @@ import { NormalTypes, tuple } from '../utils/prop-types'
 import { getColors } from '../input/styles'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
+import { ForwardRefFC } from '../utils/ForwardRefFC'
 
 const resizeTypes = tuple('none', 'both', 'horizontal', 'vertical', 'initial', 'inherit')
 export type TextareaResizes = typeof resizeTypes[number]
@@ -34,10 +35,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.TextareaHTMLAttributes<any>, keyof Props>
 export type TextareaProps = Props & NativeAttrs
 
-const TextareaComponent = React.forwardRef<
-  HTMLTextAreaElement,
-  React.PropsWithChildren<TextareaProps>
->(
+const TextareaComponent = React.forwardRef(
   (
     {
       type,
@@ -160,7 +158,7 @@ const TextareaComponent = React.forwardRef<
       </div>
     )
   },
-)
+) as ForwardRefFC<HTMLTextAreaElement, React.PropsWithChildren<TextareaProps>>
 
 TextareaComponent.defaultProps = defaultProps
 TextareaComponent.displayName = 'GeistTextarea'

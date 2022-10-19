@@ -30,7 +30,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PaginationProps = Props & NativeAttrs
 
-const PaginationComponent: React.FC<React.PropsWithChildren<PaginationProps>> = ({
+const PaginationComponent = (({
   page: customPage,
   initialPage,
   count,
@@ -106,7 +106,7 @@ const PaginationComponent: React.FC<React.PropsWithChildren<PaginationProps>> = 
       `}</style>
     </PaginationContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<PaginationProps>>
 
 PaginationComponent.defaultProps = defaultProps
 PaginationComponent.displayName = 'GeistPagination'

@@ -20,7 +20,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CodeProps = Props & NativeAttrs
 
-const CodeComponent: React.FC<React.PropsWithChildren<CodeProps>> = ({
+const CodeComponent = (({
   children,
   block,
   className,
@@ -106,7 +106,7 @@ const CodeComponent: React.FC<React.PropsWithChildren<CodeProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<CodeProps>>
 
 CodeComponent.defaultProps = defaultProps
 CodeComponent.displayName = 'GeistCode'

@@ -12,7 +12,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type PageFooterProps = Props & NativeAttrs
 
-const PageFooterComponent: React.FC<React.PropsWithChildren<PageFooterProps>> = ({
+const PageFooterComponent = (({
   children,
   ...props
 }: React.PropsWithChildren<PageFooterProps> & typeof defaultProps) => {
@@ -34,7 +34,7 @@ const PageFooterComponent: React.FC<React.PropsWithChildren<PageFooterProps>> = 
       `}</style>
     </footer>
   )
-}
+}) as React.FC<React.PropsWithChildren<PageFooterProps>>
 
 PageFooterComponent.defaultProps = defaultProps
 PageFooterComponent.displayName = 'GeistPageFooter'

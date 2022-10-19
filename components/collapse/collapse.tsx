@@ -26,7 +26,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CollapseProps = Props & NativeAttrs
 
-const CollapseComponent: React.FC<React.PropsWithChildren<CollapseProps>> = ({
+const CollapseComponent = (({
   children,
   title,
   subtitle,
@@ -135,7 +135,7 @@ const CollapseComponent: React.FC<React.PropsWithChildren<CollapseProps>> = ({
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<CollapseProps>>
 
 CollapseComponent.defaultProps = defaultProps
 CollapseComponent.displayName = 'GeistCollapse'

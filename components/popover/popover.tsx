@@ -43,7 +43,7 @@ type ExcludeTooltipProps = {
 
 export type PopoverProps = Props & Omit<TooltipProps, keyof ExcludeTooltipProps>
 
-const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
+const PopoverComponent = (({
   content,
   children,
   trigger,
@@ -98,7 +98,7 @@ const PopoverComponent: React.FC<React.PropsWithChildren<PopoverProps>> = ({
       </Tooltip>
     </PopoverContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<PopoverProps>>
 
 PopoverComponent.defaultProps = defaultProps
 PopoverComponent.displayName = 'GeistPopover'

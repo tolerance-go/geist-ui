@@ -21,7 +21,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type RadioGroupProps = Props & NativeAttrs
 
-const RadioGroupComponent: React.FC<React.PropsWithChildren<RadioGroupProps>> = ({
+const RadioGroupComponent = (({
   disabled,
   onChange,
   value,
@@ -80,7 +80,7 @@ const RadioGroupComponent: React.FC<React.PropsWithChildren<RadioGroupProps>> = 
       `}</style>
     </RadioContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<RadioGroupProps>>
 
 RadioGroupComponent.defaultProps = defaultProps
 RadioGroupComponent.displayName = 'GeistRadioGroup'

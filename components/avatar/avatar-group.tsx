@@ -15,7 +15,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type AvatarGroupProps = Props & NativeAttrs
 
-const AvatarGroupComponent: React.FC<React.PropsWithChildren<AvatarGroupProps>> = ({
+const AvatarGroupComponent = (({
   count,
   className,
   children,
@@ -51,7 +51,7 @@ const AvatarGroupComponent: React.FC<React.PropsWithChildren<AvatarGroupProps>> 
       `}</style>
     </div>
   )
-}
+}) as React.FC<React.PropsWithChildren<AvatarGroupProps>>
 
 AvatarGroupComponent.defaultProps = defaultProps
 AvatarGroupComponent.displayName = 'GeistAvatarGroup'

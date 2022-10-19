@@ -19,7 +19,7 @@ const defaultProps = {
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props>
 export type CollapseGroupProps = Props & NativeAttrs
 
-const CollapseGroupComponent: React.FC<React.PropsWithChildren<CollapseGroupProps>> = ({
+const CollapseGroupComponent = (({
   children,
   accordion,
   className,
@@ -29,21 +29,23 @@ const CollapseGroupComponent: React.FC<React.PropsWithChildren<CollapseGroupProp
   const [state, setState, stateRef] = useCurrentState<Array<number>>([])
   const classes = useClasses('collapse-group', className)
 
-  const updateValues = (currentIndex: number, nextState: boolean) => {
-    const hasChild = stateRef.current.find(val => val === currentIndex)
-    if (accordion) {
-      if (nextState) return setState([currentIndex])
-      return setState([])
+  const updateValues = (currentIndex: number | undefined, nextState: boolean) => {
+    if (typeof currentIndex === 'number') {
+      const hasChild = stateRef.current.find(val => val === currentIndex)
+      if (accordion) {
+        if (nextState) return setState([currentIndex])
+        return setState([])
+      }
+  
+      if (nextState) {
+        // In a few cases, the user will set Collapse Component state manually.
+        // If the user incorrectly set the state, Group component should ignore it.
+        /* istanbul ignore if */
+        if (hasChild) return
+        return setState([...stateRef.current, currentIndex])
+      }
+      setState(stateRef.current.filter(item => item !== currentIndex))
     }
-
-    if (nextState) {
-      // In a few cases, the user will set Collapse Component state manually.
-      // If the user incorrectly set the state, Group component should ignore it.
-      /* istanbul ignore if */
-      if (hasChild) return
-      return setState([...stateRef.current, currentIndex])
-    }
-    setState(stateRef.current.filter(item => item !== currentIndex))
   }
 
   const initialValue = useMemo<CollapseConfig>(
@@ -77,7 +79,7 @@ const CollapseGroupComponent: React.FC<React.PropsWithChildren<CollapseGroupProp
       </div>
     </CollapseContext.Provider>
   )
-}
+}) as React.FC<React.PropsWithChildren<CollapseGroupProps>>
 
 CollapseGroupComponent.defaultProps = defaultProps
 CollapseGroupComponent.displayName = 'GeistCollapseGroup'
