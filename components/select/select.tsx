@@ -21,6 +21,7 @@ import SelectInput from './select-input'
 import useScale, { withScale } from '../use-scale'
 import useClasses from '../use-classes'
 import { ForwardRefFC } from '../utils/ForwardRefFC'
+import { SelectOptionProps } from './select-option'
 
 export type SelectRef = {
   focus: () => void
@@ -174,7 +175,9 @@ const SelectComponent = React.forwardRef(
       const [, optionChildren] = pickChildByProps(children, 'value', value)
       return React.Children.map(optionChildren, child => {
         if (!React.isValidElement(child)) return null
-        const el = React.cloneElement(child, { preventAllEvents: true })
+        const el = React.cloneElement(child as React.ReactElement<SelectOptionProps>, {
+          preventAllEvents: true,
+        })
         if (!multiple) return el
         return (
           <SelectMultipleValue

@@ -64,7 +64,7 @@ const CssTransition = (({
   }, [visible, renderable])
   if (!React.isValidElement(children) || !renderable) return null
 
-  return React.cloneElement(children, {
+  return React.cloneElement(children as React.ReactElement<{ className?: string }>, {
     ...props,
     className: `${children.props.className} ${className} ${classes}`,
   })
