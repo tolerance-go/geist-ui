@@ -9,13 +9,29 @@ export interface Props {
   themes?: Array<GeistUIThemes>
 }
 
+const getAccThemes = (themes: GeistUIThemes[]) => {
+  // 有了 extendTheme api 后，theme 的名称是允许重复的，所以注释掉
+  // const safeThemes = themes.filter(item => Themes.isAvailableThemeType(item.type))
+  const nextThemes = Themes.getPresets()
+    // 如果有自定义 theme 和 preset theme 重名，使用 custom
+    .filter(item => !themes.find(theme => theme.type === item.type))
+    .concat(themes)
+  return nextThemes
+}
+
 const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   children,
   themeType,
   themes = [],
 }) => {
-  const [allThemes, setAllThemes] = useState<AllThemesConfig>({
-    themes: Themes.getPresets(),
+  const [allThemes, setAllThemes] = useState<AllThemesConfig>(() => {
+    if (!themes?.length)
+      return {
+        themes: Themes.getPresets(),
+      }
+    return {
+      themes: getAccThemes(themes),
+    }
   })
 
   const currentTheme = useMemo<GeistUIThemes>(() => {
@@ -29,10 +45,7 @@ const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
     setAllThemes(last => {
       // 有了 extendTheme api 后，theme 的名称是允许重复的，所以注释掉
       // const safeThemes = themes.filter(item => Themes.isAvailableThemeType(item.type))
-      const nextThemes = Themes.getPresets()
-        // 如果有自定义 theme 和 preset theme 重名，使用 custom
-        .filter(item => !themes.find(theme => theme.type === item.type))
-        .concat(themes)
+      const nextThemes = getAccThemes(themes)
       return {
         ...last,
         themes: nextThemes,
