@@ -10,6 +10,7 @@ interface Props {
   onChange?: (value: string | number) => void
   className?: string
   useRow?: boolean
+  gap?: number
 }
 
 const defaultProps = {
@@ -29,15 +30,19 @@ const RadioGroupComponent = (({
   className,
   initialValue,
   useRow,
+  gap,
   ...props
 }: React.PropsWithChildren<RadioGroupProps> & typeof defaultProps) => {
-  const { SCALES } = useScale()
+  const { unit, SCALES } = useScale()
   const [selfVal, setSelfVal] = useState<string | number | undefined>(initialValue)
   const updateState = (nextValue: string | number) => {
     setSelfVal(nextValue)
     onChange && onChange(nextValue)
   }
-
+  const gapUnit = useMemo(
+    () => (gap ? `calc(${gap} * ${unit})` : null),
+    [gap, unit],
+  )
   const providerValue = useMemo(() => {
     return {
       updateState,
@@ -61,7 +66,7 @@ const RadioGroupComponent = (({
         .radio-group {
           display: flex;
           flex-direction: ${useRow ? 'col' : 'column'};
-          --radio-group-gap: ${SCALES.font(1)};
+          --radio-group-gap: ${gapUnit ?? SCALES.font(1)};
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
           padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)};

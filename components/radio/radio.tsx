@@ -21,6 +21,7 @@ export interface RadioEvent {
 }
 
 interface Props {
+  gap?: number
   checked?: boolean
   value?: string | number
   type?: RadioTypes
@@ -46,13 +47,15 @@ const RadioComponent = (({
   type,
   value: radioValue,
   children,
+  gap,
   ...props
 }: React.PropsWithChildren<RadioProps> & typeof defaultProps) => {
   const theme = useTheme()
-  const { SCALES } = useScale()
+  const { unit, SCALES } = useScale()
   const [selfChecked, setSelfChecked] = useState<boolean>(!!checked)
   const { value: groupValue, disabledAll, inGroup, updateState } = useRadioContext()
   const [withoutDescChildren, DescChildren] = pickChild(children, RadioDescription)
+  const gapUnit = useMemo(() => (gap ? `calc(${gap} * ${unit})` : null), [gap, unit])
 
   if (inGroup) {
     if (checked !== undefined) {
@@ -155,7 +158,7 @@ const RadioComponent = (({
           position: relative;
           display: inline-block;
           transform: scale(0.875);
-          margin-right: calc(var(--radio-size) * 0.375);
+          margin-right: ${gapUnit ?? `calc(var(--radio-size) * 0.375)`};
         }
         .point:before {
           content: '';
