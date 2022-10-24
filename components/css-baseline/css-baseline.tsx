@@ -35,6 +35,7 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({ children }) =
           position: relative;
           overflow-x: hidden;
           font-family: ${theme.font.sans};
+          box-sizing: border-box;
         }
 
         #__next {
