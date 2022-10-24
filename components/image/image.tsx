@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { CSSProperties, useEffect, useMemo, useRef, useState } from 'react'
 import useTheme from '../use-theme'
 import ImageSkeleton from './image.skeleton'
 import { transformDataSource } from './helpers'
@@ -10,6 +10,7 @@ interface Props {
   disableSkeleton?: boolean
   className?: string
   maxDelay?: number
+  objectFit?: CSSProperties['objectFit']
 }
 
 const defaultProps = {
@@ -26,6 +27,7 @@ const ImageComponent = (({
   disableSkeleton,
   className,
   maxDelay,
+  objectFit,
   ...props
 }: ImageProps & typeof defaultProps) => {
   const { SCALES, getScaleProps } = useScale()
@@ -83,7 +85,7 @@ const ImageComponent = (({
         img {
           width: ${SCALES.width(1, 'auto')};
           height: ${SCALES.height(1, 'auto')};
-          object-fit: scale-down;
+          object-fit: ${objectFit ?? 'scale-down'};
           display: inline-block;
         }
       `}</style>
