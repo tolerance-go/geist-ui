@@ -1,5 +1,6 @@
 import React from 'react'
 import useTheme from '../use-theme'
+import clsx from 'clsx'
 
 export interface InputLabel {
   isRight?: boolean
@@ -12,7 +13,7 @@ const InputLabel: React.FC<React.PropsWithChildren<InputLabel>> = ({
   const theme = useTheme()
 
   return (
-    <span className={isRight ? 'right' : ''}>
+    <span className={clsx('input-label', isRight ? 'right' : '')}>
       {children}
       <style jsx>{`
         span {

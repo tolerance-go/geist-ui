@@ -10,8 +10,8 @@ export interface Props {
   htmlType?: string
   readOnly?: boolean
   disabled?: boolean
-  label?: string
-  labelRight?: string
+  label?: React.ReactNode
+  labelRight?: React.ReactNode
   icon?: React.ReactNode
   iconRight?: React.ReactNode
   iconClickable?: boolean

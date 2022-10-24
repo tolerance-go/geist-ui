@@ -103,6 +103,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.16.7",
+    "clsx": "^1.2.1",
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
