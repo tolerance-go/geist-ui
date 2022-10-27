@@ -50,6 +50,7 @@ const InputComponent = React.forwardRef(
       onClearClick,
       clearable,
       className,
+      inputClassName,
       onBlur,
       onFocus,
       autoComplete,
@@ -73,7 +74,10 @@ const InputComponent = React.forwardRef(
       [label, labelRight],
     )
     const iconClasses = useMemo(
-      () => (iconRight ? 'right-icon' : icon ? 'left-icon' : ''),
+      () => ({
+        'right-icon': !!iconRight,
+        'left-icon': !!icon,
+      }),
       [icon, iconRight],
     )
     const { color, borderColor, hoverBorder } = useMemo(
@@ -143,7 +147,7 @@ const InputComponent = React.forwardRef(
             <input
               type={htmlType}
               ref={inputRef}
-              className={useClasses({ disabled }, iconClasses)}
+              className={useClasses({ disabled }, inputClassName, iconClasses)}
               placeholder={placeholder}
               disabled={disabled}
               readOnly={readOnly}
