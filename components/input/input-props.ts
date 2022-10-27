@@ -10,8 +10,8 @@ export interface Props {
   htmlType?: string
   readOnly?: boolean
   disabled?: boolean
-  label?: string
-  labelRight?: string
+  label?: React.ReactNode
+  labelRight?: React.ReactNode
   icon?: React.ReactNode
   iconRight?: React.ReactNode
   iconClickable?: boolean
@@ -23,6 +23,8 @@ export interface Props {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void
   onIconClick?: (e: React.MouseEvent<HTMLDivElement>) => void
   autoComplete?: string
+  // 作用在 input 元素上的类名
+  inputClassName?: string
 }
 
 export const defaultProps = {
