@@ -2,6 +2,7 @@ import React, {
   CSSProperties,
   ForwardRefExoticComponent,
   PropsWithoutRef,
+  ReactNode,
   RefAttributes,
   useEffect,
   useImperativeHandle,
@@ -20,6 +21,7 @@ import Loading from '../loading'
 import { pickChild } from '../utils/collections'
 import useCurrentState from '../utils/use-current-state'
 import useScale, { withScale } from '../use-scale'
+import { Props as InputProps } from '../input/input-props'
 
 export type AutoCompleteTypes = NormalTypes
 
@@ -32,7 +34,7 @@ export type AutoCompleteOptions = Array<
   typeof AutoCompleteItem | AutoCompleteOption | React.ReactElement<AutoCompleteItemProps>
 >
 
-interface Props {
+type Props = Pick<InputProps, 'label' | 'labelRight' | 'icon'> & {
   options?: AutoCompleteOptions
   type?: AutoCompleteTypes
   initialValue?: string
@@ -48,6 +50,9 @@ interface Props {
   disableFreeSolo?: boolean
   className?: string
   getPopupContainer?: () => HTMLElement | null
+  popupHeader?: ReactNode
+  // empty 应该出现的时候，隐藏它
+  hideEmpty?: boolean
 }
 
 const defaultProps = {
@@ -78,9 +83,12 @@ const childrenToOptionsNode = (options: Array<AutoCompleteOption>) =>
 
 // When the search is not set, the "clearable" icon can be displayed in the original location.
 // When the search is seted, at least one element should exist to avoid re-render.
-const getSearchIcon = (searching?: boolean, scale: string | number = 1) => {
-  if (searching === undefined) return null
-  return searching ? <Loading scale={+scale / 2} /> : <span />
+const getSearchIcon = (
+  searching?: boolean,
+  clearable?: boolean,
+  scale: string | number = 1,
+) => {
+  return searching ? <Loading scale={+scale / 2} /> : clearable ? null : <span />
 }
 
 const AutoCompleteComponent = React.forwardRef(
@@ -102,6 +110,8 @@ const AutoCompleteComponent = React.forwardRef(
       disableMatchWidth,
       disableFreeSolo,
       getPopupContainer,
+      popupHeader,
+      hideEmpty,
       ...props
     }: React.PropsWithChildren<AutoCompleteProps> & typeof defaultProps,
     userRef: React.Ref<HTMLInputElement | null>,
@@ -129,6 +139,7 @@ const AutoCompleteComponent = React.forwardRef(
       }
       if (options.length === 0) {
         if (state === '') return null
+        if (hideEmpty) return null
         return hasEmptyChild ? (
           emptyChild
         ) : (
@@ -137,10 +148,7 @@ const AutoCompleteComponent = React.forwardRef(
       }
       return childrenToOptionsNode(options as Array<AutoCompleteOption>)
     }, [searching, options])
-    const showClearIcon = useMemo(
-      () => clearable && searching === undefined,
-      [clearable, searching],
-    )
+    const showClearIcon = useMemo(() => clearable && !searching, [clearable, searching])
 
     const updateValue = (val: string) => {
       if (disabled) return
@@ -201,6 +209,8 @@ const AutoCompleteComponent = React.forwardRef(
       value: state,
     }
 
+    const rightIcon = getSearchIcon(searching, clearable, getScaleProps('scale'))
+
     return (
       <AutoCompleteContext.Provider value={initialValue}>
         <div ref={ref} className="auto-complete">
@@ -213,7 +223,8 @@ const AutoCompleteComponent = React.forwardRef(
             clearable={showClearIcon}
             width={SCALES.width(1, 'initial')}
             height={SCALES.height(2.25)}
-            iconRight={getSearchIcon(searching, getScaleProps('scale'))}
+            iconRight={rightIcon}
+            inputClassName={!rightIcon && showClearIcon ? 'right-icon' : undefined}
             {...inputProps}
           />
           <AutoCompleteDropdown
@@ -222,6 +233,7 @@ const AutoCompleteComponent = React.forwardRef(
             className={dropdownClassName}
             dropdownStyle={dropdownStyle}
             getPopupContainer={getPopupContainer}>
+            {popupHeader}
             {autoCompleteItems}
           </AutoCompleteDropdown>
 
