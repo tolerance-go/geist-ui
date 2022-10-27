@@ -41,6 +41,7 @@ const GridContainerComponent = (({
         ${SCALES.mr(0, 'var(--grid-container-margin)')}
         ${SCALES.mb(0, 'var(--grid-container-margin)')}
         ${SCALES.ml(0, 'var(--grid-container-margin)')};
+      padding: ${SCALES.pt(0)} ${SCALES.pr(0)} ${SCALES.pb(0)} ${SCALES.pl(0)};
     }
   `
   const classes = useClasses(resolveClassName, className)
