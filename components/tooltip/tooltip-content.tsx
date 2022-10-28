@@ -90,7 +90,7 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
             padding: 0;
             z-index: 1000;
             box-shadow: ${hasShadow ? theme.expressiveness.shadowMedium : 'none'};
-            width: ${SCALES.width(1, 'auto')};
+            width: ${SCALES.width(1, 'max-content')};
             height: ${SCALES.height(1, 'auto')};
           }
 
