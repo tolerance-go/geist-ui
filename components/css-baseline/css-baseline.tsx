@@ -38,10 +38,6 @@ const CssBaseline: React.FC<React.PropsWithChildren<unknown>> = ({ children }) =
           box-sizing: border-box;
         }
 
-        #__next {
-          overflow-x: hidden;
-        }
-
         *,
         *:before,
         *:after {
