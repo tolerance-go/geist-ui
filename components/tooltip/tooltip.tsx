@@ -24,6 +24,7 @@ interface Props {
   className?: string
   portalClassName?: string
   onVisibleChange?: TooltipOnVisibleChange
+  getContainer?: () => HTMLElement | null
 }
 
 const defaultProps = {
@@ -58,6 +59,7 @@ const TooltipComponent = (({
   onVisibleChange,
   hideArrow,
   visible: customVisible,
+  getContainer,
   ...props
 }: React.PropsWithChildren<TooltipProps> & typeof defaultProps) => {
   const timer = useRef<number>()
@@ -80,6 +82,7 @@ const TooltipComponent = (({
     iconOffset,
     parent: ref,
     className: portalClassName,
+    getContainer,
   }
 
   const changeVisible = (nextState: boolean) => {

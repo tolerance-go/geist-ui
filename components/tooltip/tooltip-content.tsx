@@ -22,6 +22,7 @@ interface Props {
   offset: number
   className?: string
   iconOffset: TooltipIconOffset
+  getContainer?: () => HTMLElement | null,
 }
 export type TooltipIconOffset = {
   x: string
@@ -38,10 +39,11 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   type,
   className,
   hideArrow,
+  getContainer
 }) => {
   const theme = useTheme()
   const { SCALES } = useScale()
-  const el = usePortal('tooltip')
+  const el = usePortal('tooltip', getContainer)
   const selfRef = useRef<HTMLDivElement>(null)
   const [rect, setRect] = useState<TooltipPosition>(defaultTooltipPosition)
   const colors = useMemo(() => getColors(type, theme.palette), [type, theme.palette])

@@ -56,6 +56,7 @@ const PopoverComponent = (({
   ...props
 }: React.PropsWithChildren<PopoverProps> & typeof defaultProps) => {
   const { SCALES } = useScale()
+
   const [visible, setVisible] = useState<boolean>(initialVisible)
   const textNode = useMemo(() => getReactNode(content), [content])
   const onChildClick = () => {
