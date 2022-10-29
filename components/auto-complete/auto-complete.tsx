@@ -139,7 +139,6 @@ const AutoCompleteComponent = React.forwardRef(
       }
       if (options.length === 0) {
         if (state === '') return null
-        if (hideEmpty) return null
         return hasEmptyChild ? (
           emptyChild
         ) : (
@@ -227,15 +226,18 @@ const AutoCompleteComponent = React.forwardRef(
             inputClassName={!rightIcon && showClearIcon ? 'right-icon' : undefined}
             {...inputProps}
           />
-          <AutoCompleteDropdown
-            visible={visible}
-            disableMatchWidth={disableMatchWidth}
-            className={dropdownClassName}
-            dropdownStyle={dropdownStyle}
-            getPopupContainer={getPopupContainer}>
-            {popupHeader}
-            {autoCompleteItems}
-          </AutoCompleteDropdown>
+          {/* options.length === 0 时会显示一个 empty 下拉占位 */}
+          {hideEmpty && options.length === 0 && !searching ? null : (
+            <AutoCompleteDropdown
+              visible={visible}
+              disableMatchWidth={disableMatchWidth}
+              className={dropdownClassName}
+              dropdownStyle={dropdownStyle}
+              getPopupContainer={getPopupContainer}>
+              {popupHeader}
+              {autoCompleteItems}
+            </AutoCompleteDropdown>
+          )}
 
           <style jsx>{`
             .auto-complete {
