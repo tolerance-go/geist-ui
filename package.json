@@ -1,5 +1,5 @@
 {
-  "name": "@fenxing/geist-ui",
+  "name": "@fenxing/mandong-ui",
   "version": "2.3.8",
   "main": "components/index.ts",
   "scripts": {
