@@ -4,7 +4,6 @@ import { useScale, withScale } from '../use-scale'
 import useClasses from '../use-classes'
 
 interface Props {
-  width?: number
   squared?: boolean
   rounded?: boolean
   component?: keyof JSX.IntrinsicElements
@@ -12,7 +11,6 @@ interface Props {
   show?: boolean
   minHeight?: number
   animate?: boolean
-  height?: number
 }
 
 const defaultProps = {
@@ -31,14 +29,12 @@ export type SkeletonProps = Props & NativeAttrs
 const SkeletonComponent: React.FC<React.PropsWithChildren<SkeletonProps>> = ({
   component,
   children,
-  width,
   squared,
   rounded,
   show,
   minHeight,
   className,
   animate,
-  height,
   ...props
 }: React.PropsWithChildren<SkeletonProps> & typeof defaultProps) => {
   const Component = component
@@ -55,8 +51,8 @@ const SkeletonComponent: React.FC<React.PropsWithChildren<SkeletonProps>> = ({
       {children}
       <style jsx>{`
         .skeleton {
-          width: ${SCALES.width(width ?? 1, 'initial')};
-          height: ${SCALES.height(height ?? 1, 'initial')};
+          width: ${SCALES.width(1, 'auto')};
+          height: ${SCALES.height(1, 'auto')};
           display: block;
           min-height: ${minHeight}px;
           position: relative;
@@ -101,15 +97,18 @@ const SkeletonComponent: React.FC<React.PropsWithChildren<SkeletonProps>> = ({
           animation: none;
         }
 
-        .skeleton.rounded, .skeleton.rounded:before {
+        .skeleton.rounded,
+        .skeleton.rounded:before {
           border-radius: 100%;
         }
 
-        .skeleton.squared, .skeleton.squared:before {
+        .skeleton.squared,
+        .skeleton.squared:before {
           border-radius: 0;
         }
 
-        .skeleton.show, .skeleton.show:before {
+        .skeleton.show,
+        .skeleton.show:before {
           background: transparent;
           width: initial;
           height: initial;
