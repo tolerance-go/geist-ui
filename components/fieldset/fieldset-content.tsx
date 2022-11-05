@@ -4,6 +4,7 @@ import useClasses from '../use-classes'
 
 interface Props {
   className?: string
+  hasHeadImg?: boolean
 }
 
 const defaultProps = {
@@ -16,6 +17,7 @@ export type FieldsetContentProps = Props & NativeAttrs
 const FieldsetContentComponent = (({
   className,
   children,
+  hasHeadImg,
   ...props
 }: React.PropsWithChildren<FieldsetContentProps> & typeof defaultProps) => {
   const { SCALES } = useScale()
@@ -28,7 +30,8 @@ const FieldsetContentComponent = (({
         .content {
           width: ${SCALES.width(1, '100%')};
           height: ${SCALES.height(1, 'auto')};
-          padding: ${SCALES.pt(1.3)} ${SCALES.pr(1.3)} ${SCALES.pb(1.3)} ${SCALES.pl(1.3)};
+          padding: ${SCALES.pt(hasHeadImg ? 0.6 : 1.3)} ${SCALES.pr(1.3)}
+            ${SCALES.pb(1.3)} ${SCALES.pl(1.3)};
           margin: ${SCALES.mt(0)} ${SCALES.mr(0)} ${SCALES.mb(0)} ${SCALES.ml(0)};
         }
         .content :global(> *:first-child) {

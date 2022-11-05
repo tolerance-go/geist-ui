@@ -16,6 +16,7 @@ interface Props {
   title?: string | ReactNode
   subtitle?: string | ReactNode
   className?: string
+  headImg?: React.ReactNode
 }
 
 const defaultProps = {
@@ -37,6 +38,7 @@ const FieldsetComponent = (({
   children,
   value,
   label,
+  headImg,
   ...props
 }: React.PropsWithChildren<FieldsetProps> & typeof defaultProps) => {
   const theme = useTheme()
@@ -84,7 +86,12 @@ const FieldsetComponent = (({
 
   return (
     <div className={classes} {...props}>
-      {hasContent ? content : <FieldsetContent>{content}</FieldsetContent>}
+      {headImg}
+      {hasContent ? (
+        content
+      ) : (
+        <FieldsetContent hasHeadImg={!!headImg}>{content}</FieldsetContent>
+      )}
       {FooterChildren && FooterChildren}
       <style jsx>{`
         .fieldset {
