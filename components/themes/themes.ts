@@ -2,7 +2,7 @@ import { GeistUIThemes } from './presets/index'
 import type { DeepPartial } from '../utils/types'
 import lightTheme from './presets/default'
 import darkTheme from './presets/dark'
-import merge from 'lodash-es/merge'
+import merge from 'lodash/merge'
 
 export type GeistUserTheme = DeepPartial<GeistUIThemes> & { type: string }
 
