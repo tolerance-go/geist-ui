@@ -1,5 +1,5 @@
 {
-  "name": "@fenxing/mandong-ui",
+  "name": "@fenxing/ui",
   "version": "2.3.8",
   "main": "components/index.ts",
   "scripts": {
