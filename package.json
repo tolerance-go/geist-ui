@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "main": "components/index.ts",
   "scripts": {
+    "clean:node_modules": "rimraf node_modules",
     "build": "build-storybook --no-dll",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
     "dev-": "pnpm docs:collect && next dev",
