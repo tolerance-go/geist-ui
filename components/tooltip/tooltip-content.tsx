@@ -22,7 +22,7 @@ interface Props {
   offset: number
   className?: string
   iconOffset: TooltipIconOffset
-  getContainer?: () => HTMLElement | null,
+  getContainer?: () => HTMLElement | null
 }
 export type TooltipIconOffset = {
   x: string
@@ -39,7 +39,7 @@ const TooltipContent: React.FC<React.PropsWithChildren<Props>> = ({
   type,
   className,
   hideArrow,
-  getContainer
+  getContainer,
 }) => {
   const theme = useTheme()
   const { SCALES } = useScale()

@@ -216,4 +216,3 @@ export type { HighlightProps } from './shared/highlight'
 
 export { addColorAlpha } from './utils/color'
 export type { DeepPartial } from './utils/types'
-

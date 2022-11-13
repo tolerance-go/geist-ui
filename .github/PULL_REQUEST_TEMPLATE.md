@@ -4,4 +4,3 @@
 - [ ] Tests have been added / updated (or snapshots)
 
 ## Change information
-

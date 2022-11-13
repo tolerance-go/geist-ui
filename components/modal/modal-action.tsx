@@ -95,7 +95,8 @@ const ModalActionComponent = React.forwardRef(
         className={classes}
         onClick={clickHandler}
         disabled={disabled}
-        {...overrideProps}>
+        {...overrideProps}
+      >
         {children}
         {styles}
       </Button>

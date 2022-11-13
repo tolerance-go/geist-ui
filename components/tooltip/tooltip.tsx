@@ -120,7 +120,8 @@ const TooltipComponent = (({
       onClick={clickEventHandler}
       onMouseEnter={() => mouseEventHandler(true)}
       onMouseLeave={() => mouseEventHandler(false)}
-      {...props}>
+      {...props}
+    >
       {children}
       <TooltipContent {...contentProps}>{text}</TooltipContent>
       <style jsx>{`

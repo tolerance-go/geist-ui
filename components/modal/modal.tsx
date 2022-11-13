@@ -98,7 +98,8 @@ const ModalComponent = (({
         positionClassName={positionClassName}
         backdropClassName={backdropClassName}
         layerClassName={layerClassName}
-        {...bindings}>
+        {...bindings}
+      >
         <ModalWrapper visible={visible} className={wrapClassName}>
           {withoutActionsChildren}
           {hasActions && <ModalActions>{ActionsChildren}</ModalActions>}

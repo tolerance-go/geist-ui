@@ -1,4 +1,4 @@
-##  Geist UI - React Contributing Guide
+## Geist UI - React Contributing Guide
 
 ### Ready to start
 
@@ -57,7 +57,6 @@ At any time, you think it's ok, you can start the following steps to submit your
 > How can I update remote origin ?
 
 - refer to [here](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes).
-
 
 ### Get stuck
 

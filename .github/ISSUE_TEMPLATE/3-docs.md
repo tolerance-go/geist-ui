@@ -1,6 +1,6 @@
 ---
-name: "About `docs` 🛠️"
-about: "Issues and feature requests for docs"
+name: 'About `docs` 🛠️'
+about: 'Issues and feature requests for docs'
 ---
 
 <!-- Please do NOT DELETE the template. -->
@@ -12,11 +12,9 @@ This is a document site related issue.
 
 ### Languages
 
-  - [x] English
-  - [ ] Chinese
+- [x] English
+- [ ] Chinese
 
 ### Description
 
-
 ### Page Links (Optional)
-

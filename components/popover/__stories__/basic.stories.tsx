@@ -26,7 +26,8 @@ export const Container: Story<PopoverProps> = () => {
           width: 100vw;
           height: 100vh;
         `,
-      )}>
+      )}
+    >
       <div
         className={cx(
           'sideBar',
@@ -43,14 +44,16 @@ export const Container: Story<PopoverProps> = () => {
             align-items: center;
             padding: 10px 0;
           `,
-        )}>
+        )}
+      >
         <div
           className={css`
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-          `}>
+          `}
+        >
           <Popover
             placement="left"
             content={
@@ -66,7 +69,8 @@ export const Container: Story<PopoverProps> = () => {
                   <span>切换主题</span>
                 </Popover.Item>
               </div>
-            }>
+            }
+          >
             <Avatar />
           </Popover>
         </div>
@@ -86,7 +90,8 @@ export const Container: Story<PopoverProps> = () => {
               background-color: transparent;
             }
           `,
-        )}></div>
+        )}
+      ></div>
     </div>
   )
 }

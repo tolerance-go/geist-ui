@@ -65,7 +65,8 @@ const FieldsetGroupComponent = (({
             <button
               onClick={() => clickHandle(item.value)}
               key={item.value}
-              className={selfVal === item.value ? 'active' : ''}>
+              className={selfVal === item.value ? 'active' : ''}
+            >
               {item.label}
             </button>
           ))}

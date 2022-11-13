@@ -36,7 +36,7 @@ const CollapseGroupComponent = (({
         if (nextState) return setState([currentIndex])
         return setState([])
       }
-  
+
       if (nextState) {
         // In a few cases, the user will set Collapse Component state manually.
         // If the user incorrectly set the state, Group component should ignore it.

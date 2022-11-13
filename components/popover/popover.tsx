@@ -89,7 +89,8 @@ const PopoverComponent = (({
         portalClassName={classes}
         visible={visible}
         onVisibleChange={onPopoverVisibleChange}
-        {...props}>
+        {...props}
+      >
         {children}
         <style jsx>{`
           :global(.tooltip-content.popover > .inner) {

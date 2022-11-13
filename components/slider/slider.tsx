@@ -161,7 +161,8 @@ const SliderComponent = (({
       className={useClasses('slider', className)}
       onClick={clickHandler}
       ref={sliderRef}
-      {...props}>
+      {...props}
+    >
       <SliderDot disabled={disabled} ref={dotRef} isClick={isClick} left={currentRatio}>
         {hideValue || value}
       </SliderDot>

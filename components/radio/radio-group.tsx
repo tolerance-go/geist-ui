@@ -39,10 +39,7 @@ const RadioGroupComponent = (({
     setSelfVal(nextValue)
     onChange && onChange(nextValue)
   }
-  const gapUnit = useMemo(
-    () => (gap ? `calc(${gap} * ${unit})` : null),
-    [gap, unit],
-  )
+  const gapUnit = useMemo(() => (gap ? `calc(${gap} * ${unit})` : null), [gap, unit])
   const providerValue = useMemo(() => {
     return {
       updateState,

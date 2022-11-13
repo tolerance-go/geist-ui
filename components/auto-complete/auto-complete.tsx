@@ -233,7 +233,8 @@ const AutoCompleteComponent = React.forwardRef(
               disableMatchWidth={disableMatchWidth}
               className={dropdownClassName}
               dropdownStyle={dropdownStyle}
-              getPopupContainer={getPopupContainer}>
+              getPopupContainer={getPopupContainer}
+            >
               {popupHeader}
               {autoCompleteItems}
             </AutoCompleteDropdown>

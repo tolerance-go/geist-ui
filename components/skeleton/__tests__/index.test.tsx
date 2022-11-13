@@ -16,11 +16,11 @@ describe('Skeleton', () => {
   })
 
   it('should ignore height and width when children are shown', () => {
-    const wrapper = mount(<Skeleton width={50} height={50} show />);
+    const wrapper = mount(<Skeleton width={50} height={50} show />)
 
-    const rendered = wrapper.find('.skeleton').html();
-    expect(rendered).not.toContain('width: 50px;');
-    expect(rendered).not.toContain('height: 50px;');
+    const rendered = wrapper.find('.skeleton').html()
+    expect(rendered).not.toContain('width: 50px;')
+    expect(rendered).not.toContain('height: 50px;')
   })
 
   it('should render different components', () => {

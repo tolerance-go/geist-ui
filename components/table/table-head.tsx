@@ -13,9 +13,10 @@ const defaultProps = {
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
-export type TableHeadProps<TableDataItem extends TableDataItemBase> = Props<TableDataItem> & NativeAttrs
+export type TableHeadProps<TableDataItem extends TableDataItemBase> =
+  Props<TableDataItem> & NativeAttrs
 
-const makeColgroup = <TableDataItem extends TableDataItemBase,>(
+const makeColgroup = <TableDataItem extends TableDataItemBase>(
   width: number,
   columns: Array<TableAbstractColumn<TableDataItem>>,
 ) => {
@@ -51,7 +52,10 @@ const TableHead = <TableDataItem extends TableDataItemBase>(
       <thead>
         <tr>
           {columns.map((column, index) => (
-            <th key={`table-th-${String(column.prop)}-${index}`} className={column.className}>
+            <th
+              key={`table-th-${String(column.prop)}-${index}`}
+              className={column.className}
+            >
               <div className="thead-box">{column.label}</div>
             </th>
           ))}

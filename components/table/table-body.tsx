@@ -25,7 +25,8 @@ const defaultProps = {
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<any>, keyof Props<any>>
-export type TableBodyProps<TableDataItem extends TableDataItemBase> = Props<TableDataItem> & NativeAttrs
+export type TableBodyProps<TableDataItem extends TableDataItemBase> =
+  Props<TableDataItem> & NativeAttrs
 
 const TableBody = <TableDataItem extends TableDataItemBase>({
   data,
@@ -49,7 +50,8 @@ const TableBody = <TableDataItem extends TableDataItemBase>({
           <tr
             key={`tbody-row-${index}`}
             className={useClasses({ hover }, className)}
-            onClick={() => rowClickHandler(row, index)}>
+            onClick={() => rowClickHandler(row, index)}
+          >
             <TableCell<TableDataItem>
               columns={columns}
               row={row}

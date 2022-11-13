@@ -1,5 +1,5 @@
 ---
-name: "Bug report 🐞"
+name: 'Bug report 🐞'
 about: "If something isn't working as expected 🤔."
 ---
 
@@ -10,8 +10,8 @@ about: "If something isn't working as expected 🤔."
 
 ## Version & Environment
 
-  - Version of browser
-  - Version of `geist-ui/core`
+- Version of browser
+- Version of `geist-ui/core`
 
 ## Expected Behaviour
 
@@ -24,4 +24,3 @@ I got an error:
 ```
 code
 ```
-

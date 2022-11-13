@@ -77,10 +77,10 @@ const TextComponent = (({
   const elements: ElementMap = { h1, h2, h3, h4, h5, h6, p, blockquote }
   const inlineElements: ElementMap = { span, small, b, em, i, del }
   const names = Object.keys(elements).filter(
-    (name) => elements[name as keyof JSX.IntrinsicElements],
+    name => elements[name as keyof JSX.IntrinsicElements],
   ) as TextRenderableElements
   const inlineNames = Object.keys(inlineElements).filter(
-    (name) => inlineElements[name as keyof JSX.IntrinsicElements],
+    name => inlineElements[name as keyof JSX.IntrinsicElements],
   ) as TextRenderableElements
 
   /**

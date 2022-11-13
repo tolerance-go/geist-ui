@@ -42,9 +42,7 @@ const getGroupBorderColors = (
   return colors[withoutLightType] || (colors.default as string)
 }
 
-const ButtonGroupComponent = ((
-  groupProps: ButtonGroupProps & typeof defaultProps,
-) => {
+const ButtonGroupComponent = ((groupProps: ButtonGroupProps & typeof defaultProps) => {
   const theme = useTheme()
   const { SCALES } = useScale()
   const { disabled, type, ghost, vertical, children, className, ...props } = groupProps

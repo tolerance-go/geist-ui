@@ -1,6 +1,6 @@
 ---
-name: "Feature request 🚀"
-about: "I have a suggestion!"
+name: 'Feature request 🚀'
+about: 'I have a suggestion!'
 ---
 
 <!-- Please do NOT DELETE the template. -->
@@ -8,16 +8,17 @@ about: "I have a suggestion!"
 
 # Feature request 🚀
 
-  - [ ] I will create Pull Request
-  - [x] It's just a suggestion
+- [ ] I will create Pull Request
+- [x] It's just a suggestion
 
 ### Expected
 
-  - Component or something else
+- Component or something else
 
 ### Examples
 
 ```jsx
+
 ```
 
 ### Programme (Optional)
