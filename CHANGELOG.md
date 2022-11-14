@@ -1,5 +1,11 @@
 # @fenxing/ui
 
+## 3.0.2
+
+### Patch Changes
+
+-  4a626b8: chore(ui): remove now.json
+
 ## 3.0.1
 
 ### Patch Changes
