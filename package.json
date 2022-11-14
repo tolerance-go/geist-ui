@@ -1,6 +1,6 @@
 {
   "name": "@fenxing/ui",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "components/index.ts",
   "scripts": {
     "clean:node_modules": "rimraf node_modules",
