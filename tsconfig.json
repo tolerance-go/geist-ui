@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "geist-ui": [
-        "components/index.tsx"
-      ]
+      "geist-ui": ["components/index.tsx"]
     },
     "strictNullChecks": true,
     "moduleResolution": "node",
@@ -15,10 +13,7 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "allowJs": true,
     "strict": false,
@@ -27,18 +22,10 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "./typings"
-    ],
+    "typeRoots": ["node_modules/@types", "./typings"],
     "incremental": true
   },
-  "exclude": [
-    "node_modules",
-    "es",
-    "examples",
-    "dist"
-  ],
+  "exclude": ["node_modules", "es", "examples", "dist"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

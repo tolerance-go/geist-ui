@@ -5,9 +5,7 @@
     "paths": {
       "*": ["*"],
       "geist-ui": ["components/index.tsx"],
-      "components/*": [
-        "components/*"
-      ]
+      "components/*": ["components/*"]
     },
     "declaration": true,
     "emitDeclarationOnly": true,
@@ -20,10 +18,7 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "allowJs": true,
     "strict": false,
@@ -35,16 +30,10 @@
       {
         "transform": "typescript-transform-paths",
         "afterDeclarations": true,
-        "exclude": [ "**/node_modules/**" ]
+        "exclude": ["**/node_modules/**"]
       }
     ]
   },
-  "files": [
-    "../components/index.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es"
-  ]
+  "files": ["../components/index.ts"],
+  "exclude": ["node_modules", "lib", "es"]
 }

@@ -13,10 +13,7 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "allowJs": true,
     "strict": false,
@@ -25,12 +22,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "files": [
-    "../components/index.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib",
-    "es"
-  ]
+  "files": ["../components/index.ts"],
+  "exclude": ["node_modules", "lib", "es"]
 }
