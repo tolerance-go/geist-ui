@@ -4,7 +4,6 @@
   "main": "components/index.ts",
   "scripts": {
     "clean:node_modules": "rimraf node_modules",
-    "build": "build-storybook --no-dll",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
     "dev-": "pnpm docs:collect && next dev",
     "docs:start": "next start",
@@ -13,7 +12,7 @@
     "docs:build": "yarn docs:collect & yarn docs:seeds && next build",
     "prettier": "prettier --write .",
     "lint": "eslint \"{components,lib}/**/*.{js,ts,tsx}\"",
-    "test": "jest --config .jest.config.js --no-cache",
+    "test-": "jest --config .jest.config.js --no-cache",
     "test:update": "jest --config .jest.config.js --no-cache --update-snapshot",
     "test:coverage": "yarn test --coverage",
     "build:clear": "rm -rf ./dist ./esm",
