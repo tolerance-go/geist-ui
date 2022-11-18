@@ -4,7 +4,7 @@
   "main": "components/index.ts",
   "scripts": {
     "clean:node_modules": "rimraf node_modules",
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
+    "dev--": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
     "dev-": "pnpm docs:collect && next dev",
     "docs:start": "next start",
     "docs:collect": "node scripts/collect-meta.js",
