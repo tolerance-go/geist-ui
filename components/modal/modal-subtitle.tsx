@@ -4,6 +4,7 @@ import useScale, { withScale } from '../use-scale'
 
 interface Props {
   className?: string
+  textTransform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase'
 }
 
 type NativeAttrs = Omit<React.HTMLAttributes<HTMLHeadingElement>, keyof Props>
@@ -12,6 +13,7 @@ export type ModalSubtitleProps = Props & NativeAttrs
 const ModalSubtitleComponent: React.FC<React.PropsWithChildren<ModalSubtitleProps>> = ({
   className = '',
   children,
+  textTransform = 'uppercase',
   ...props
 }: React.PropsWithChildren<ModalSubtitleProps>) => {
   const theme = useTheme()
@@ -28,7 +30,7 @@ const ModalSubtitleComponent: React.FC<React.PropsWithChildren<ModalSubtitleProp
           display: inline-block;
           text-align: center;
           word-break: break-word;
-          text-transform: uppercase;
+          text-transform: ${textTransform};
           color: ${theme.palette.accents_5};
           font-size: ${SCALES.font(0.875)};
           line-height: 1.5em;
