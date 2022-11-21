@@ -1,7 +1,9 @@
 {
   "name": "@fenxing/ui",
   "version": "3.0.2",
+  "sideEffects": false,
   "main": "components/index.ts",
+  "types": "components/index.ts",
   "scripts": {
     "clean:node_modules": "rimraf node_modules",
     "dev--": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
@@ -46,7 +48,6 @@
     "/dist",
     "/esm"
   ],
-  "sideEffects": false,
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/plugin-transform-runtime": "^7.14.5",
