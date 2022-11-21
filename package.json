@@ -5,7 +5,11 @@
   "main": "components/index.ts",
   "types": "components/index.ts",
   "scripts": {
-    "clean:node_modules": "rimraf node_modules",
+    "dev": "concurrently \"npm:gen:menu\" \"npm:gen:stories\" \"npm:dev:next\"",
+    "dev:next": "next dev -p 4010",
+    "gen:menu": "tsx ../scripts/gen-stories --no-watch && tsx ../scripts/gen-menu",
+    "gen:stories": "tsx ../scripts/gen-stories -ii true",
+    "clean": "rm -rf node_modules",
     "dev--": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s .public -p 3009 --no-dll",
     "dev-": "pnpm docs:collect && next dev",
     "docs:start": "next start",
@@ -86,6 +90,7 @@
     "babel-jest": "^27.0.5",
     "babel-plugin-transform-rename-import": "^2.3.0",
     "caniuse-lite": "^1.0.30001422",
+    "concurrently": "7.3.0",
     "css-mediaquery": "^0.1.2",
     "enzyme": "^3.11.0",
     "eslint": "^7.29.0",
@@ -96,6 +101,7 @@
     "fs-extra": "^10.0.0",
     "jest": "^27.0.5",
     "next": "^12.3.1",
+    "next-transpile-modules": "^9.0.0",
     "prettier": "^2.3.1",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
@@ -115,6 +121,8 @@
   "dependencies": {
     "@babel/runtime": "^7.16.7",
     "@emotion/css": "^11.10.5",
+    "@fenxing/base": "workspace:*",
+    "@fenxing/scripts": "workspace:*",
     "clsx": "^1.2.1",
     "lodash": "^4.17.21"
   },

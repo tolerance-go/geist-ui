@@ -31,6 +31,6 @@
     "**/*.ts",
     "**/*.tsx",
     "lib/**/*.tsx",
-    "components/**/*.tsx"
+    "components/**/*.tsx",
   ]
 }

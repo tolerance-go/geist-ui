@@ -1,10 +1,14 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { CssBaseline } from 'components'
+import { renderEmotionStatic } from '@fenxing/base/renderEmotionStatic'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
     const styles = CssBaseline.flush()
+
+    const page = await ctx.renderPage()
+    const { css, ids } = await renderEmotionStatic(page.html)
 
     return {
       ...initialProps,
@@ -12,6 +16,10 @@ class MyDocument extends Document {
         <>
           {initialProps.styles}
           {styles}
+          <style
+            data-emotion={`css ${ids.join(' ')}`}
+            dangerouslySetInnerHTML={{ __html: css }}
+          />
         </>
       ),
     }

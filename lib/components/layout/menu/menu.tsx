@@ -118,7 +118,7 @@ const Menu: React.FC<unknown> = () => {
                 onChange={handleTabChange}
               >
                 <Tabs.Item font="14px" label={isChinese ? '主页' : 'Home'} value="" />
-                {allSides.map((tab, index) => (
+                {allSides?.map((tab, index) => (
                   <Tabs.Item
                     font="14px"
                     label={tab.localeName || tab.name}

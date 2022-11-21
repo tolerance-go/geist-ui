@@ -8,6 +8,7 @@ import ConfigContext from 'lib/config-provider'
 import useDomClean from 'lib/use-dom-clean'
 import { HybridCode, HybridLink, Search } from 'lib/components'
 import Menu from 'lib/components/layout/menu'
+import { useRouter } from 'next/router'
 
 const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
   const theme = useTheme()
@@ -17,6 +18,7 @@ const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
     setCustomTheme(theme)
     setThemeType(theme.type)
   }
+  const { pathname } = useRouter()
 
   useEffect(() => {
     const theme = window.localStorage.getItem('theme')
@@ -68,19 +70,30 @@ const Application: NextPage<AppProps<{}>> = ({ Component, pageProps }) => {
         <CssBaseline />
         <ConfigContext
           onThemeChange={themeChangeHandle}
-          onThemeTypeChange={type => setThemeType(type)}
-        >
-          <Menu />
-          <Search />
-          <MDXProvider
-            components={{
-              a: HybridLink,
-              img: Image,
-              pre: HybridCode,
-            }}
-          >
-            <Component {...pageProps} />
-          </MDXProvider>
+          onThemeTypeChange={type => setThemeType(type)}>
+          {pathname.startsWith('/en-us') || pathname.startsWith('/zh-cn') ? (
+            <>
+              <Menu />
+              <Search />
+              <MDXProvider
+                components={{
+                  a: HybridLink,
+                  img: Image,
+                  pre: HybridCode,
+                }}>
+                <Component {...pageProps} />
+              </MDXProvider>
+            </>
+          ) : (
+            <div
+              style={{
+                margin: '20px 100px',
+                padding: '20px',
+                border: '1px solid',
+              }}>
+              <Component {...pageProps} />
+            </div>
+          )}
         </ConfigContext>
         <style global jsx>{`
           .tag {

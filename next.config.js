@@ -1,3 +1,7 @@
+const withTM = require('next-transpile-modules')([
+  '@fenxing/base',
+])
+
 const withMDX = require('@next/mdx')({
   extension: /\.(md|mdx)?$/,
   options: {
@@ -35,11 +39,11 @@ const nextConfig = {
 
   async redirects() {
     return [
-      {
-        source: '/',
-        permanent: true,
-        destination: '/en-us',
-      },
+      // {
+      //   source: '/',
+      //   permanent: true,
+      //   destination: '/en-us',
+      // },
       {
         source: '/icons',
         permanent: true,
@@ -69,4 +73,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(withMDX(nextConfig))
+module.exports = withBundleAnalyzer(withMDX(withTM(nextConfig)))
