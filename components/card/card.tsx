@@ -52,11 +52,13 @@ const CardComponent = (({
   return (
     <div className={useClasses('card', className)} {...props}>
       {imageChildren}
-      {hasContent ? (
-        withoutImageChildren
-      ) : (
-        <CardContent>{withoutImageChildren}</CardContent>
-      )}
+      {React.Children.count(withoutImageChildren) > 0 ? (
+        hasContent ? (
+          withoutImageChildren
+        ) : (
+          <CardContent>{withoutImageChildren}</CardContent>
+        )
+      ) : null}
       {footerChildren}
       <style jsx>{`
         .card {
